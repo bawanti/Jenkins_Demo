@@ -1,0 +1,47 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>VclQdycotFgpKi9-gt-27575338-2020-09-02T00:42:58.768Z::conn.xml</types1:EntryId>
+      <types1:Name>AppConnection1</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>basav1@iics.com</types1:CreatedBy>
+      <types1:CreationDate>2020-09-02T00:42:59Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppConnection1"
+                     label="AppConnection1"
+                     name="AppConnection1">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false"
+                          name="IcsLoginUrl"
+                          value="https://dm-us.informaticacloud.com/ma/home"/>
+               <attribute encrypted="false" name="Username" value="basav1@iics.com"/>
+               <attribute encrypted="true" name="Password" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/ICS_API/ICS_API_svcDef.xml"
+                               name="ICS_API"
+                               supportsConnectionTest="false"
+                               uuid="5948d459-e805-42c1-b510-47e0685c1be2">
+               <description>Native connector for Informatica Cloud API.</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>5QyGn00chqMca9wiNfgEQ2</types1:GUID>
+      <types1:DisplayName>AppConnection1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-05-04T20:49:55.368Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

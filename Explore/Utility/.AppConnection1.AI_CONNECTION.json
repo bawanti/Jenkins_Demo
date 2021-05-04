@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "5QyGn00chqMca9wiNfgEQ2",
+      "objectName": "AppConnection1",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Utility",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "VclQdycotFgpKi9-gt-27575338-2020-09-02T00:42:58.768Z::conn.xml"
+         }
+      }
+   }
+]

@@ -1,0 +1,52 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>aaaa-gt-14784052-2020-04-06T21:37:47.006Z::conn.xml</types1:EntryId>
+      <types1:Name>ICS-API</types1:Name>
+      <types1:ParentFlowIds>4BEogjER0XabeAz-gt-18239038-2020-04-06T21:37:53.891Z::pd.xml,5Ku8QhxOSM8NciZ-gt-14784194-2020-04-06T21:37:49.914Z::pd.xml,80EKZhHwzZsMBw8-gt-18239081-2020-04-06T21:37:54.964Z::pd.xml,aaaaaa-gt-14631349-2020-04-06T21:37:52.009Z::pd.xml,AADvGFaaaaaaaaa-gt-14784087-2020-04-06T21:37:47.429Z::pd.xml,GKrclvAhrswVYx8-gt-14631384-2020-04-06T21:37:52.525Z::pd.xml,hHRvsGRvDINciZB-gt-14837736-2020-04-06T21:37:57.124Z::gt.xml,jtmuOSSHCwkNmum-gt-18239105-2020-04-06T21:37:55.152Z::pd.xml,t1Q5Ihs9pNz6HKo-gt-5577996-2020-04-06T21:37:47.31Z::pd.xml,upIO3M4WwOC2XZP-gt-27622726-2020-09-02T00:52:43.35Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>ICS API Connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:SecureAgentGroup</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>basav1@iics.com</types1:CreatedBy>
+      <types1:CreationDate>2020-04-06T21:37:47Z</types1:CreationDate>
+      <types1:ModifiedBy>basav1@iics.com</types1:ModifiedBy>
+      <types1:ModificationDate>2020-09-02T03:08:38Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>basav1@iics.com</types1:PublishedBy>
+      <types1:PublicationDate>2020-09-02T03:08:47Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/ICS-API/ICS-API.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="ICS-API"
+                     label="ICS-API"
+                     name="ICS-API">
+            <description>ICS API Connection</description>
+            <tags>.agent:SecureAgentGroup</tags>
+            <agent>SecureAgentGroup</agent>
+            <attributes>
+               <attribute encrypted="false"
+                          name="IcsLoginUrl"
+                          value="https://dm-us.informaticacloud.com/ma"/>
+               <attribute encrypted="false" name="Username" value="basav1@iics.com"/>
+               <attribute encrypted="true" name="Password" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/ICS_API/ICS_API_svcDef.xml"
+                               name="ICS_API"
+                               supportsConnectionTest="false"
+                               uuid="5948d459-e805-42c1-b510-47e0685c1be2">
+               <description>Native connector for Informatica Cloud API.</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>9M5VF0SXF7ucuxqhbcdaaX</types1:GUID>
+      <types1:DisplayName>ICS-API</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-05-04T20:49:55.507Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

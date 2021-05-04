@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "9E1QyGB3e8Ogh3iOnqeqWE",
+      "objectName": "GetOrganizationId",
+      "objectType": "PROCESS",
+      "path": "/Explore/Utility",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "This process can be used to get the Organization Id.",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "7LHxkYAOTMneBjr-gt-27571398-2020-09-02T00:38:05.941Z::pd.xml"
+         }
+      }
+   }
+]
