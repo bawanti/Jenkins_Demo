@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "8CrNZ64CVpcgnqkqMi4c6M",
+      "objectName": "Jenkins-Demo",
+      "objectType": "Project",
+      "path": "/Explore",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]
