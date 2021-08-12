@@ -1,0 +1,53 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>34XutaaabbgdoGs-gt-33793034-2021-06-25T15:23:10.871Z::conn.xml</types1:EntryId>
+      <types1:Name>IICS-API-Con-V2</types1:Name>
+      <types1:ParentFlowIds>3PUjJBUhtycotFg-gt-33814744-2021-06-25T15:32:58.881Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>basav1@iics.com</types1:CreatedBy>
+      <types1:CreationDate>2021-06-25T15:23:11Z</types1:CreationDate>
+      <types1:ModifiedBy>basav1@iics.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-06-28T06:24:55Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>basav1@iics.com</types1:PublishedBy>
+      <types1:PublicationDate>2021-07-01T17:19:37Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/IICS-API-Con-V2/IICS-API-Con-V2.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="IICS-API-Con-V2"
+                     label="IICS-API-Con-V2"
+                     name="IICS-API-Con-V2">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="Username" value="basav1@iics.com"/>
+               <attribute encrypted="true" name="Password" value=""/>
+               <attribute encrypted="false"
+                          name="ServerURL"
+                          value="https://dm-us.informaticacloud.com/ma/api/v2/user/login"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/IICS_API_Service_V2/IICS_API_Service_V2_svcDef.xml"
+                               guid="2GOHs88SIQJhO0fWiyFyic"
+                               name="IICS_API_Service_V2"
+                               supportsConnectionTest="false"
+                               uuid="bcc49d82-22f7-4fd0-b805-2505b90ac000">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>1bsnYeACJwteDhwDdgfWWj</types1:GUID>
+      <types1:DisplayName>IICS-API-Con-V2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-12T14:53:37.451Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

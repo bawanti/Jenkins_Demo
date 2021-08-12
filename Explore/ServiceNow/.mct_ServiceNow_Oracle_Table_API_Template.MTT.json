@@ -1,0 +1,142 @@
+[
+   {
+      "objectGuid": "72sjcVTCjiwhYGKRGDkyQb",
+      "objectName": "mct_ServiceNow_Oracle_Table_API_Template",
+      "objectType": "MTT",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [
+            "haFC8cZAzGFbwd0jEu122o",
+            "jOivuvrL1evgsvZ2N3CcC5",
+            "4Xu2bUpTwFId069nqOOdQ6",
+            "8ejGhT7U5ZnhvYusbPp76c"
+         ],
+         "repoInfo": {
+            "repoHandle": "0102OB0Z000000000036"
+         }
+      }
+   },
+   {
+      "objectGuid": "haFC8cZAzGFbwd0jEu122o",
+      "objectName": "ServiceNow_Oracle_Table_API",
+      "objectType": "DTEMPLATE",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "0102OB1700000000002S"
+         }
+      }
+   },
+   {
+      "objectGuid": "jOivuvrL1evgsvZ2N3CcC5",
+      "objectName": "ServiceNowTable",
+      "objectType": "Connection",
+      "path": "/SYS",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": null,
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "0102OB0B00000000001K"
+         }
+      }
+   },
+   {
+      "objectGuid": "4Xu2bUpTwFId069nqOOdQ6",
+      "objectName": "Oracle_DB_XE",
+      "objectType": "Connection",
+      "path": "/SYS",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": null,
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "0102OB0B000000000003"
+         }
+      }
+   },
+   {
+      "objectGuid": "8ejGhT7U5ZnhvYusbPp76c",
+      "objectName": "SecureAgentGroup",
+      "objectType": "AgentGroup",
+      "path": "/SYS",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": null,
+            "documentState": "VALID"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "0102OB25000000000004"
+         }
+      }
+   }
+]

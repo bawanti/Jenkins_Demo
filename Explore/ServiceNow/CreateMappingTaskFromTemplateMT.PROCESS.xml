@@ -1,0 +1,320 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3PUjJBUhtycotFg-gt-33814744-2021-06-25T15:32:58.881Z::pd.xml</types1:EntryId>
+      <types1:Name>CreateMappingTaskFromTemplateMT</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>basav1@iics.com</types1:CreatedBy>
+      <types1:CreationDate>2021-06-25T15:32:59Z</types1:CreationDate>
+      <types1:ModifiedBy>basav1@iics.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-07-16T16:25:30Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>basav1@iics.com</types1:PublishedBy>
+      <types1:PublicationDate>2021-07-16T16:25:42Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.CreateMappingTaskFromTemplateMT/CreateMappingTaskFromTemplateMT.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="CreateMappingTaskFromTemplateMT"
+                  name="CreateMappingTaskFromTemplateMT"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Template_TaskName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="ContainerId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="MappingTaskCreateResponse" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:MappingTaskCreateResponse</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">gDfmLdgmnMycvhGccxS4e5</option>
+                  </options>
+               </field>
+               <field description="" name="Count" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="TaskCreateResponse" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:MappingTaskCreateResponse</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">gDfmLdgmnMycvhGccxS4e5</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="Servicenow_Object_Info_Current"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">Database-JDBC-Conn:SNOW_OBJECT_METADATA</option>
+                     <option name="required">false</option>
+                     <option name="guid">272AkdvfpMEfhiOgtYXmuK</option>
+                  </options>
+               </field>
+               <field description="" name="Servicenow_Object_Info_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">Database-JDBC-Conn:SNOW_OBJECT_METADATA</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">272AkdvfpMEfhiOgtYXmuK</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kqk1gcbz" targetId="kqjz83ox"/>
+               </start>
+               <assignment id="kqjz83ox">
+                  <title>Query Service Now Object Info</title>
+                  <operation source="list" to="temp.Servicenow_Object_Info_List">
+                     <query advanceQuery="false" from="Database-JDBC-Conn:SNOW_OBJECT_METADATA">
+                        <where>Order By SEQID ASC</where>
+                     </query>
+                  </operation>
+                  <link id="kr6iiu37" targetId="kqkhfn5l"/>
+               </assignment>
+               <assignment id="kqkhfn5l">
+                  <title>Assignment to Count</title>
+                  <operation source="formula" to="output.Count">
+                     <expression language="XQuery">list:count($temp.Servicenow_Object_Info_List  ) </expression>
+                  </operation>
+                  <link id="kqkhfn5n" targetId="kqk1gcbl"/>
+               </assignment>
+               <container id="kqk1gcbl" type="exclusive">
+                  <title>Service Now Objects Exists?</title>
+                  <flow id="kqk1gcbp">
+                     <service id="kqkgekcp">
+                        <title>Login</title>
+                        <serviceName>IICS-API-Con-V2:LogIn</serviceName>
+                        <serviceGUID>1bsnYeACJwteDhwDdgfWWj</serviceGUID>
+                        <serviceInput/>
+                        <link id="kr6h2y5m" targetId="kr6h2y5l"/>
+                     </service>
+                     <service id="kqkgekcz">
+                        <title>GetMCT</title>
+                        <serviceName>IICS-API-Con-V2:GetMCT</serviceName>
+                        <serviceGUID>1bsnYeACJwteDhwDdgfWWj</serviceGUID>
+                        <serviceInput>
+                           <parameter name="icSessionId" source="field" updatable="true">output.icSessionId</parameter>
+                           <parameter name="mctTaskName" source="field" updatable="true">input.Template_TaskName</parameter>
+                           <parameter name="saasServer" source="field" updatable="true">output.serverUrl</parameter>
+                        </serviceInput>
+                        <link id="kqkgekde" targetId="kqkgekdd"/>
+                     </service>
+                     <assignment id="kr6h2y5l">
+                        <title>Default MT Name if not provided</title>
+                        <operation source="formula" to="input.Template_TaskName">
+                           <expression language="XQuery">if(exists($input.Template_TaskName) and string-length ($input.Template_TaskName ) &gt; 0)
+then $input.Template_TaskName
+else "mct_ServiceNow_Oracle_Table_API_Template"</expression>
+                        </operation>
+                        <link id="kr6h2y5n" targetId="kqkgekcz"/>
+                     </assignment>
+                     <assignment id="kqkgekdd">
+                        <title>Read First and Remaining Object Info</title>
+                        <operation source="formula" to="temp.Servicenow_Object_Info_Current">
+                           <expression language="XQuery">list:head($temp.Servicenow_Object_Info_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Servicenow_Object_Info_List">
+                           <expression language="XQuery">list:tail($temp.Servicenow_Object_Info_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.TaskCreateResponse">
+                           <expression language="XQuery">()</expression>
+                        </operation>
+                        <link id="kqkjag3m" targetId="kqkjagbr"/>
+                     </assignment>
+                     <assignment id="kqkjagcr">
+                        <title>Set Details to Process Output</title>
+                        <operation source="field" to="temp.TaskCreateResponse[1]/Object">temp.Servicenow_Object_Info_Current.SOURCEOBJECT</operation>
+                        <operation source="formula" to="output.MappingTaskCreateResponse">
+                           <function name="list:append">
+                              <arg name="dest_field">{$output.MappingTaskCreateResponse}</arg>
+                              <arg name="new_field">{$temp.TaskCreateResponse}</arg>
+                           </function>
+                        </operation>
+                        <link id="kqkjagdm" targetId="kqkjagde"/>
+                     </assignment>
+                     <eventContainer id="kqkjagbr">
+                        <service id="kqkjag3l">
+                           <title>CreateMCT</title>
+                           <serviceName>IICS-API-Con-V2:CreateMCT</serviceName>
+                           <serviceGUID>1bsnYeACJwteDhwDdgfWWj</serviceGUID>
+                           <serviceInput>
+                              <parameter name="SaasURL" source="field" updatable="true">output.serverUrl</parameter>
+                              <parameter name="icSessionId" source="field" updatable="true">output.icSessionId</parameter>
+                              <parameter name="sourceObject" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SOURCEOBJECT</parameter>
+                              <parameter name="targetObject" source="field" updatable="true">temp.Servicenow_Object_Info_Current.TARGETOBJECT</parameter>
+                              <parameter name="mctName" source="formula">
+                                 <expression language="XQuery">"mct_ServiceNow_Oracle_Table_API_" || $temp.Servicenow_Object_Info_Current.SOURCEOBJECT </expression>
+                              </parameter>
+                              <parameter name="runtimeEnvironmentId" source="field" updatable="true">output.GetMCTResponse[1]/runtimeEnvironmentId</parameter>
+                              <parameter name="mappingId" source="field" updatable="true">output.GetMCTResponse[1]/mappingId</parameter>
+                              <parameter name="sourceConnectionId" source="formula">
+                                 <expression language="XQuery">$output.GetMCTResponse[1]/parameters[type="H_SOURCE"]/sourceConnectionId</expression>
+                              </parameter>
+                              <parameter name="targetConnectionId" source="formula">
+                                 <expression language="XQuery">$output.GetMCTResponse[1]/parameters[type="TARGET"]/targetConnectionId </expression>
+                              </parameter>
+                              <parameter name="SNow_sysparm_query" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_QUERY</parameter>
+                              <parameter name="SNow_sysparm_exclude_reference_link"
+                                         source="field"
+                                         updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_EXCLUDE_REFERENCE_LINK</parameter>
+                              <parameter name="SNow_sysparm_suppress_pagination_header"
+                                         source="field"
+                                         updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_SUPPRESS_PAGINATION_HEADER</parameter>
+                              <parameter name="SNow_sysparm_fields" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_FIELDS</parameter>
+                              <parameter name="SNow_sysparm_limit" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_LIMIT</parameter>
+                              <parameter name="SNow_sysparm_view" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_VIEW</parameter>
+                              <parameter name="SNow_sysparm_query_category" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_QUERY_CATEGORY</parameter>
+                              <parameter name="SNow_sysparm_query_no_domain" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_QUERY_NO_DOMAIN</parameter>
+                              <parameter name="SNow_sysparm_no_count" source="field" updatable="true">temp.Servicenow_Object_Info_Current.SNOW_SYSPARM_NO_COUNT</parameter>
+                              <parameter name="containerId" source="field" updatable="true">input.ContainerId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kqkjagbt">
+                           <assignment id="kqkjagc2">
+                              <title>Set Created Task Details</title>
+                              <operation source="field" to="temp.TaskCreateResponse[1]/Id">output.id</operation>
+                              <operation source="constant" to="temp.TaskCreateResponse[1]/Status">Success</operation>
+                              <operation source="field" to="temp.TaskCreateResponse[1]/TaskName">output.name</operation>
+                              <link id="kql2ikkc" targetId="kql2ikkb"/>
+                           </assignment>
+                           <assignment id="kql2ikkb">
+                              <title>Upd Metadata Table - Task Create Status</title>
+                              <operation source="field" to="temp.Servicenow_Object_Info_Current.CDI_TASK_ID">temp.TaskCreateResponse[1]/Id</operation>
+                              <operation source="field" to="temp.Servicenow_Object_Info_Current.CDI_TASK_NAME">temp.TaskCreateResponse[1]/TaskName</operation>
+                              <operation source="field"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_TASKCREATE_STATUS">temp.TaskCreateResponse[1]/Status</operation>
+                              <operation source="formula"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_LASTUPDATED">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_LASTUPDATEDBY">CAI-SystemUser</operation>
+                              <operation source="constant"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_TASKCREATE_ERRORMESSAGE"/>
+                           </assignment>
+                           <link id="kqkjagbu" targetId="kqkjagbr" type="containerLink"/>
+                        </flow>
+                        <flow id="kqkjagbw">
+                           <assignment id="kqkjagce">
+                              <title>Set Error Message</title>
+                              <operation source="field" to="temp.TaskCreateResponse[1]/ErrorMessage">output.faultInfo[1]/reason</operation>
+                              <operation source="formula" to="temp.TaskCreateResponse[1]/TaskName">
+                                 <expression language="XQuery">"mct_ServiceNow_Oracle_Table_API_" || $temp.Servicenow_Object_Info_Current.SOURCEOBJECT </expression>
+                              </operation>
+                              <operation source="constant" to="temp.TaskCreateResponse[1]/Status">Failed</operation>
+                              <link id="kql2ikmg" targetId="kql2ikmf"/>
+                           </assignment>
+                           <assignment id="kql2ikmf">
+                              <title>Upd Metadata Table - Task Create Status (Failed)</title>
+                              <operation source="field"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_TASKCREATE_STATUS">temp.TaskCreateResponse[1]/Status</operation>
+                              <operation source="field" to="temp.Servicenow_Object_Info_Current.CDI_TASK_NAME">temp.TaskCreateResponse[1]/TaskName</operation>
+                              <operation source="field"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_TASKCREATE_ERRORMESSAGE">temp.TaskCreateResponse[1]/ErrorMessage</operation>
+                              <operation source="constant"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_LASTUPDATEDBY">CAI-SystemUser</operation>
+                              <operation source="formula"
+                                         to="temp.Servicenow_Object_Info_Current.CDI_LASTUPDATED">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                           </assignment>
+                           <link id="kqkjagbx" targetId="kqkjagbr" type="containerLink"/>
+                        </flow>
+                        <link id="kqkjagbs" targetId="kqkjagbt" type="containerLink"/>
+                        <link id="kqkjagcs" targetId="kqkjagcr"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kqkjagbo" interrupting="true">
+                              <link id="kqkjagbv" targetId="kqkjagbw" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="kqkjagde" type="exclusive">
+                        <title>More Objects?</title>
+                        <flow id="kqkjagdf">
+                           <jumpTo id="kqkjagdg">
+                              <link id="kqkjagdl" targetId="kqkgekdd"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="kqkjagdh">
+                           <end id="kqkjagdi">
+                              <title>End</title>
+                           </end>
+                        </flow>
+                        <link id="kqkjagdj" targetId="kqkjagdf" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.Servicenow_Object_Info_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kqkjagdk" targetId="kqkjagdh" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.Servicenow_Object_Info_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="kqk1gcbs">
+                     <end id="kqk1gceq">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <link id="kqk1gcbo" targetId="kqk1gcbp" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.Servicenow_Object_Info_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kqk1gcbr" targetId="kqk1gcbs" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.Servicenow_Object_Info_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>1HFbmNIPUcejqYXJdeMqg0</types1:GUID>
+      <types1:DisplayName>CreateMappingTaskFromTemplateMT</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-12T14:53:37.636Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

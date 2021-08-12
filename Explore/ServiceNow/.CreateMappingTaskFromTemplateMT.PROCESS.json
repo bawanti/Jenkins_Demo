@@ -1,0 +1,94 @@
+[
+   {
+      "objectGuid": "1HFbmNIPUcejqYXJdeMqg0",
+      "objectName": "CreateMappingTaskFromTemplateMT",
+      "objectType": "PROCESS",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "gDfmLdgmnMycvhGccxS4e5",
+            "1bsnYeACJwteDhwDdgfWWj",
+            "272AkdvfpMEfhiOgtYXmuK"
+         ],
+         "repoInfo": {
+            "repoHandle": "3PUjJBUhtycotFg-gt-33814744-2021-06-25T15:32:58.881Z::pd.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "gDfmLdgmnMycvhGccxS4e5",
+      "objectName": "MappingTaskCreateResponse",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "6XEQT53nQciSrZM-gt-45064149-2021-06-30T18:32:48.926Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "1bsnYeACJwteDhwDdgfWWj",
+      "objectName": "IICS-API-Con-V2",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "34XutaaabbgdoGs-gt-33793034-2021-06-25T15:23:10.871Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "272AkdvfpMEfhiOgtYXmuK",
+      "objectName": "Database-JDBC-Conn",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "EORUDv2vSx0aa-gt-45360796-2021-06-30T21:06:18.496Z::conn.xml"
+         }
+      }
+   }
+]

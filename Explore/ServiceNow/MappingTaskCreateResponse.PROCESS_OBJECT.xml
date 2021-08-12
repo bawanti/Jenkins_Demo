@@ -1,0 +1,40 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>6XEQT53nQciSrZM-gt-45064149-2021-06-30T18:32:48.926Z::po.xml</types1:EntryId>
+      <types1:Name>MappingTaskCreateResponse</types1:Name>
+      <types1:ParentFlowIds>3PUjJBUhtycotFg-gt-33814744-2021-06-25T15:32:58.881Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>basav1@iics.com</types1:CreatedBy>
+      <types1:CreationDate>2021-06-30T18:32:49Z</types1:CreationDate>
+      <types1:ModifiedBy>basav1@iics.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-06-30T21:13:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="MappingTaskCreateResponse"
+                        isByCopy="true"
+                        name="MappingTaskCreateResponse">
+            <description/>
+            <tags/>
+            <detail>
+               <field label="TaskName" name="TaskName" type="string"/>
+               <field label="Status" name="Status" type="string"/>
+               <field label="Id" name="Id" type="string"/>
+               <field label="Object" name="Object" type="string"/>
+               <field label="ErrorMessage" name="ErrorMessage" type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>gDfmLdgmnMycvhGccxS4e5</types1:GUID>
+      <types1:DisplayName>MappingTaskCreateResponse</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-12T14:53:36.734Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

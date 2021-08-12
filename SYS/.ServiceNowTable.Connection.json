@@ -1,0 +1,58 @@
+[
+   {
+      "objectGuid": "jOivuvrL1evgsvZ2N3CcC5",
+      "objectName": "ServiceNowTable",
+      "objectType": "Connection",
+      "path": "/SYS",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": null,
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [
+            "8ejGhT7U5ZnhvYusbPp76c"
+         ],
+         "repoInfo": {
+            "repoHandle": "0102OB0B00000000001K"
+         }
+      }
+   },
+   {
+      "objectGuid": "8ejGhT7U5ZnhvYusbPp76c",
+      "objectName": "SecureAgentGroup",
+      "objectType": "AgentGroup",
+      "path": "/SYS",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "JSON",
+            "description": null,
+            "documentState": "VALID"
+         },
+         "contextAttributes": [
+            {
+               "name": "id",
+               "value": "@1"
+            }
+         ],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "0102OB25000000000004"
+         }
+      }
+   }
+]

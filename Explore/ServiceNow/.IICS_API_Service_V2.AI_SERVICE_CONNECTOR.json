@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "2GOHs88SIQJhO0fWiyFyic",
+      "objectName": "IICS_API_Service_V2",
+      "objectType": "AI_SERVICE_CONNECTOR",
+      "path": "/Explore/ServiceNow",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "AupIO3M4WwOC2XZ-gt-55463115-2021-06-25T15:23:10.428Z::svc.xml"
+         }
+      }
+   }
+]

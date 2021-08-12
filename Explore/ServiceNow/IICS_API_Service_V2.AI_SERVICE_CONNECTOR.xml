@@ -1,0 +1,1664 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>AupIO3M4WwOC2XZ-gt-55463115-2021-06-25T15:23:10.428Z::svc.xml</types1:EntryId>
+      <types1:Name>IICS_API_Service_V2</types1:Name>
+      <types1:ParentFlowIds>34XutaaabbgdoGs-gt-33793034-2021-06-25T15:23:10.871Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>basav1@iics.com</types1:CreatedBy>
+      <types1:CreationDate>2021-06-25T15:23:10Z</types1:CreationDate>
+      <types1:ModifiedBy>basav1@iics.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-07-01T17:19:00Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>basav1@iics.com</types1:PublishedBy>
+      <types1:PublicationDate>2021-07-01T17:19:06Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/IICS_API_Service_V2/IICS_API_Service_V2_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="IICS_API_Service_V2"
+                            label=""
+                            name="IICS_API_Service_V2"
+                            uuid="bcc49d82-22f7-4fd0-b805-2505b90ac000">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="Username"
+                                    required="true"
+                                    testWith="basav1@iics.com"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="true"
+                                    name="Password"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="ServerURL"
+                                    required="true"
+                                    testWith="https://dm-us.informaticacloud.com/ma/api/v2/user/login"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetConnectioByName"
+                       maxRedirects="100"
+                       name="GetConnectioByName"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="ConnName"
+                                nogen="true"
+                                required="true"
+                                testWith="salesforce"
+                                type="string"/>
+                     <parameter name="ServerURL"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="i7pPYqAXwaYeIkrF1SW1iR"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$ServerURL}/api/v2/connection/name/{$ConnName}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Con_ID" property="id" type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="LogIn"
+                       maxRedirects="100"
+                       name="LogIn"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated" url="{$ServerURL}" verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+"username": "{$Username}",
+"password": "{$Password}"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="icSessionId"
+                            property="icSessionId"
+                            type="string"/>
+                     <field description=""
+                            name="serverUrl"
+                            property="serverUrl"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="LogOut"
+                       maxRedirects="100"
+                       name="LogOut"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="i7pPYqAXwaYeIkrF1SW1iR"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-us.informaticacloud.com/ma/api/v2/user/logout"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="response"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="CreateMCT"
+                       maxRedirects="100"
+                       name="CreateMCT"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="SaasURL"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="2lJFKjWmAenb7DeB3K1GQ2"
+                                type="string"/>
+                     <parameter name="sourceObject"
+                                nogen="true"
+                                required="true"
+                                testWith="incident"
+                                type="string"/>
+                     <parameter name="targetObject"
+                                nogen="true"
+                                required="true"
+                                testWith="INCIDENT"
+                                type="string"/>
+                     <parameter name="mctName"
+                                nogen="true"
+                                required="true"
+                                testWith="mct_ServiceNow_Oracle_Incident_Table_106"
+                                type="string"/>
+                     <parameter name="runtimeEnvironmentId"
+                                nogen="true"
+                                required="true"
+                                testWith="0102OB25000000000004"
+                                type="string"/>
+                     <parameter name="mappingId"
+                                nogen="true"
+                                required="true"
+                                testWith="0102OB1700000000002S"
+                                type="string"/>
+                     <parameter name="sourceConnectionId"
+                                nogen="true"
+                                required="true"
+                                testWith="0102OB0B00000000001K"
+                                type="string"/>
+                     <parameter name="targetConnectionId"
+                                nogen="true"
+                                required="true"
+                                testWith="0102OB0B000000000003"
+                                type="string"/>
+                     <parameter description="An encoded query string used to filter the results"
+                                name="SNow_sysparm_query"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="True to exclude Table API links for reference fields (default: false)"
+                                name="SNow_sysparm_exclude_reference_link"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="True to supress pagination header (default: false)"
+                                name="SNow_sysparm_suppress_pagination_header"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="A comma-separated list of fields to return in the response"
+                                name="SNow_sysparm_fields"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="The maximum number of results returned per page (default: 10,000)"
+                                name="SNow_sysparm_limit"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="The maximum number of results returned per page (default: 10,000)"
+                                name="SNow_sysparm_view"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Name of the query category (read replica category) to use for queries"
+                                name="SNow_sysparm_query_category"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="True to access data across domains if authorized (default: false)"
+                                name="SNow_sysparm_query_no_domain"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Do not execute a select count(*) on table (default: false)"
+                                name="SNow_sysparm_no_count"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="ID of the project or folder to contain the task.&#xA;If not included in the request, the task is created in the Default folder."
+                                name="containerId"
+                                nogen="true"
+                                required="false"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$SaasURL}/api/v2/mttask"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body>{{
+    "@type": "mtTask",
+    "name": "{$mctName }",
+    "containerId": "{$containerId }",
+    "runtimeEnvironmentId": "{$runtimeEnvironmentId }",
+    "maxLogs": 10,
+    "mappingId": "{$mappingId }",
+    "paramFileType": "PARAM_FILE_LOCAL",
+    "schemaMode": "async",
+    "parameterFileEncoding": "UTF-8",
+    "parameters": [{{
+            "@type": "mtTaskParameter",
+            "name": "$src_ServeNow_Table$",
+            "type": "H_SOURCE",
+            "label": "src_ServeNow_Table",
+            "uiProperties": {{
+                "connectionParameterized": "false",
+                "isMsrcFilterParameterized": "false",
+                "objectParameterized": "false",
+                "visible": "false"
+            }},
+            "sourceConnectionId": "{$sourceConnectionId }",
+            "sourceObject": "getTableData",
+            "newFlatFile": false,
+            "newObject": false,
+            "showBusinessNames": false,
+            "naturalOrder": true,
+            "truncateTarget": false,
+            "bulkApiDBTarget": false,
+            "customFuncCfg": {{
+                "@type": "customFuncConfig",
+                "id": -1,
+                "connections": [],
+                "inputMap": [],
+                "outputFields": []
+            }},
+            "tgtFieldRefs": {{}},
+            "targetUpdateColumns": [],
+            "runtimeAttrs": {{}},
+            "isRESTModernSource": true,
+            "requestXml": "{concat('{', '\"TableName\"', ' :  \"$$SNow_Table_Name\"', 
+			'\"sysparm_query\"', ' :  \"$$SNow_sysparm_query\"', 
+			'\"sysparm_exclude_reference_link\"', ' :  \"$$SNow_sysparm_exclude_reference_link\"', 
+			'\"sysparm_suppress_pagination_header\"', ' :  \"$$SNow_sysparm_suppress_pagination_header\"', 
+			'\"sysparm_fields\"', ' :  \"$$SNow_sysparm_fields\"', 
+			'\"sysparm_limit\"', ' :  \"$$SNow_sysparm_limit\"', 
+			'\"sysparm_view\"', ' :  \"$$SNow_sysparm_view\"', 
+			'\"sysparm_query_category\"', ' :  \"$$SNow_sysparm_query_category\"', 
+			'\"sysparm_query_no_domain\"', ' :  \"$$SNow_sysparm_query_no_domain\"', 
+			'\"sysparm_no_count\"', ' :  \"$$SNow_sysparm_no_count\"', 
+			'}')}",
+            "isFileList": false,
+            "handleSpecialChars": false,
+            "frsAsset": false,
+            "dynamicFileName": false,
+            "currentlyProcessedFileName": false,
+            "tgtObjectAttributes": {{}},
+            "runtimeParameterData": {{
+                "@type": "mtTaskRuntimeParameterData",
+                "isConnectionRuntimeParameter": false,
+                "isObjectRuntimeParameter": false
+            }},
+            "overriddenFields": []
+        }}, {{
+            "@type": "mtTaskParameter",
+            "name": "$tgt_Oracle_Table$",
+            "type": "TARGET",
+            "label": "tgt_Oracle_Table",
+            "uiProperties": {{
+                "connectionParameterized": "false",
+                "objlabel": "Table",
+                "objectParameterized": "true",
+                "objDesc": "",
+                "defaultTargetUpdateColumns": ""
+            }},
+            "targetConnectionId": "{$targetConnectionId }",
+            "targetObject": "{$targetObject }",
+            "targetObjectLabel": "{$targetObject }",
+            "newFlatFile": false,
+            "newObject": false,
+            "showBusinessNames": true,
+            "naturalOrder": true,
+            "truncateTarget": false,
+            "bulkApiDBTarget": false,
+            "operationType": "Insert",
+            "customFuncCfg": {{
+                "@type": "customFuncConfig",
+                "id": -1,
+                "connections": [],
+                "inputMap": [],
+                "outputFields": []
+            }},
+            "tgtFieldRefs": {{}},
+            "targetUpdateColumns": [],
+            "extendedObject": {{
+                "@type": "extendedObject",
+                "filters": [],
+                "sortFields": []
+            }},
+            "runtimeAttrs": {{}},
+            "isRESTModernSource": true,
+            "isFileList": false,
+            "handleSpecialChars": false,
+            "frsAsset": false,
+            "dynamicFileName": false,
+            "currentlyProcessedFileName": false,
+            "tgtObjectAttributes": {{}},
+            "runtimeParameterData": {{
+                "@type": "mtTaskRuntimeParameterData",
+                "isConnectionRuntimeParameter": false,
+                "isObjectRuntimeParameter": true,
+                "objectParameterName": "Table",
+                "objectDefaultValue": "{$targetObject }"
+            }},
+            "overriddenFields": []
+        }}
+    ],
+    "sequences": [],
+    "inOutParameters": [
+		{{
+		"@type": "mtTaskInOutParameter",
+		"id": "-1",
+		"name": "SNow_Table_Name",            
+		"initialValue": "{$sourceObject }",
+		"datatype": "STRING",
+		"precision": "255",            
+		"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+		"aggregationType": "MAX",
+		"currentValue": "{$sourceObject }"
+		}},{{
+		"@type": "mtTaskInOutParameter",
+		"id": "-1",
+		"name": "SNow_sysparm_query",            
+		"initialValue": "{$SNow_sysparm_query}",
+		"datatype": "STRING",
+		"precision": "255",            
+		"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+		"aggregationType": "MAX",
+		"currentValue": "{$SNow_sysparm_query}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_exclude_reference_link",            
+			"initialValue": "{$SNow_sysparm_exclude_reference_link}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_exclude_reference_link}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_suppress_pagination_header",            
+			"initialValue": "{$SNow_sysparm_suppress_pagination_header}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_suppress_pagination_header}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_fields",            
+			"initialValue": "{$SNow_sysparm_fields}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_fields}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_limit",            
+			"initialValue": "{$SNow_sysparm_limit}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_limit}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_view",            
+			"initialValue": "{$SNow_sysparm_view}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_view}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_query_category",            
+			"initialValue": "{$SNow_sysparm_query_category}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_query_category}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_query_no_domain",            
+			"initialValue": "{$SNow_sysparm_query_no_domain}",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_query_no_domain}"
+		}},{{
+			"@type": "mtTaskInOutParameter",
+			"id": "-1",
+			"name": "SNow_sysparm_no_count",            
+			"initialValue": "{$SNow_sysparm_no_count }",
+			"datatype": "STRING",
+			"precision": "255",            
+			"retentionPolicy": "ON_SUCCESS_OR_WARNING",
+			"aggregationType": "MAX",
+			"currentValue": "{$SNow_sysparm_no_count }"
+		}}
+    ],
+    "connRuntimeAttrs": []
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="status" type="string">
+                        <xquery>{$ResponseStatusCode}</xquery>
+                     </field>
+                     <field description="" name="id" type="string">
+                        <xquery>{/root/id/text()}</xquery>
+                     </field>
+                     <field description="" name="name" type="string">
+                        <xquery>{./*:name/text()}</xquery>
+                     </field>
+                     <field description="" name="Response" type="reference" xmlElement=".">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetMappingId"
+                       maxRedirects="100"
+                       name="GetMappingId"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="ServerURL"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="g86JD6tnk22cFf68cXBAuj"
+                                type="string"/>
+                     <parameter name="path"
+                                nogen="true"
+                                required="true"
+                                testWith="PC2IICS/m_DWH2_004_20_dimensionReferentielPRS"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$ServerURL}/public/core/v3/lookup"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="INFA-SESSION-ID">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body>{{
+    "objects": [{{
+    	"path" : "{$path}",
+        "type" : "DTEMPLATE"       
+        
+    }}]
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="id" property="id" type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetConnectionbyType"
+                       maxRedirects="100"
+                       name="GetConnectionbyType"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="ServerURL"
+                                name="ServerURL"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="3J5g86ouPzWhvYTGiLUl0R"
+                                type="string"/>
+                     <parameter label="Type"
+                                name="uiType"
+                                nogen="true"
+                                required="true"
+                                testWith="CSVFile"
+                                type="string"/>
+                     <parameter label="path"
+                                name="path"
+                                nogen="true"
+                                required="true"
+                                testWith="C:\ICSLabFiles\tmp"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$ServerURL}/api/v2/connection/010ERH0B00000000000H"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="ConnectionId" type="string">
+                        <xquery>{for $x in (/root/*)
+return
+ if ($x/database/text() = $path) then
+ 	$x/id/text()
+ else ()}</xquery>
+                     </field>
+                     <field description="" name="isConnectionExists" type="string">
+                        <xquery>{if(not(empty($ConnectionId ))) then
+ 'True'
+else
+ 'False'}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="CreateFFConnection"
+                       maxRedirects="100"
+                       name="CreateFFConnection"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="ServerURL"
+                                name="ServerURL"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="6Rm7CmpXXgFiNBeBf2uwUe"
+                                type="string"/>
+                     <parameter label="path"
+                                name="path"
+                                nogen="true"
+                                required="true"
+                                testWith="C:\Users\mkarthik\Desktop\IICS"
+                                type="string"/>
+                     <parameter label="name"
+                                name="name"
+                                nogen="true"
+                                required="true"
+                                testWith="test_con"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$ServerURL}/api/v2/connection"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/xml</header>
+                           <header name="Accept">application/xml</header>
+                        </httpHeaders>
+                        <body>{&lt;connection&gt;
+      &lt;agentId&gt;01038108000000000003&lt;/agentId&gt;
+      &lt;runtimeEnvironmentId&gt;01038125000000000004&lt;/runtimeEnvironmentId&gt;      
+      
+      &lt;dateFormat&gt;MM/dd/yyyy HH:mm:ss&lt;/dateFormat&gt;
+      &lt;instanceDisplayName&gt;CSVFile&lt;/instanceDisplayName&gt;
+      &lt;type&gt;CSVFile&lt;/type&gt;
+      &lt;codepage&gt;MS1252&lt;/codepage&gt;     
+      &lt;orgId&gt;010381&lt;/orgId&gt;      
+      &lt;database&gt;{$path}&lt;/database&gt;      
+      &lt;name&gt;{$name}&lt;/name&gt;    
+   &lt;/connection&gt;}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="id" property="id" type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="searchMapping"
+                       maxRedirects="100"
+                       name="searchMapping"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="ServerURL"
+                                name="ServerURL"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="25dB99RZAVlkSTXALVtMy2"
+                                type="string"/>
+                     <parameter label="name"
+                                name="name"
+                                required="true"
+                                testWith="Demo_1Src_1Trg_Exp_Lkp"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$ServerURL}/api/v2/mapping/search"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="id" property="id" type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteMCT"
+                       maxRedirects="100"
+                       name="DeleteMCT"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="id" required="false" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$ServerURL}/api/v2/mttask/search/{$id}"
+                                        verb="DELETE"/>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetMCT"
+                       maxRedirects="100"
+                       name="GetMCT"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="1hPaGWv6ZdfkiGRhlWwXsW"
+                                type="string"/>
+                     <parameter name="mctTaskName"
+                                nogen="true"
+                                required="false"
+                                testWith="mct_ServiceNow_Oracle_Table_API_Template"
+                                type="string"/>
+                     <parameter name="saasServer"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$saasServer}/api/v2/mttask/name/{$mctTaskName}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="GetMCTResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">MCTData</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="CreateMCTDynamically"
+                       maxRedirects="100"
+                       name="CreateMCTDynamically"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="CreateMCTData"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">GetMCTResponse</option>
+                        </options>
+                     </parameter>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="5seRVSTy5gSlhfJPwPLFg6"
+                                type="string"/>
+                     <parameter name="saasServer"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="mctTaskName"
+                                nogen="true"
+                                required="true"
+                                testWith="mct_Marketo_LeadActivity_Snowflake_LeadActivity_5"
+                                type="string"/>
+                     <parameter name="ActTypeIds"
+                                nogen="true"
+                                required="true"
+                                testWith="1,2,3,6,7,8,9,11,12,13"
+                                type="string"/>
+                     <parameter name="GeneralSinceDate"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="GeneralStartDate"
+                                nogen="true"
+                                required="false"
+                                testWith="2020-11-02"
+                                type="string"/>
+                     <parameter name="GeneralEndDate"
+                                nogen="true"
+                                required="false"
+                                testWith="2020-11-03"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$saasServer}/api/v2/mttask"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+    "@type": "mtTask",
+     "name": "{$mctTaskName }",        
+    "maxLogs": 10,
+    "verbose": false,    
+    "mappingId": "012BI81700000000004O",    
+    "sessionProperties": {{}},
+    "enableCrossSchemaPushdown": true,
+    "enableParallelRun": false,
+    "autoTunedApplied": false,
+    "autoTunedAppliedType": "NONE",
+    "paramFileType": "PARAM_FILE_LOCAL",
+    "parameterFileEncoding": "UTF-8",
+    "serverlessProperties": {{}},
+    "parameters": [
+        {{
+            "@type": "mtTaskParameter",
+            "id": 140541094,
+            "name": "$s_marketo_lead_activity$",
+            "type": "EXTENDED_SOURCE",
+            "label": "s_marketo_lead_activity",
+            "uiProperties": {{
+                "connectionParameterized": "false",
+                "isMsrcFilterParameterized": "false",
+                "isMsrcSortParameterized": "false",
+                "objectParameterized": "false",
+                "visible": "false"
+            }},
+            "sourceConnectionId": "012BI80B000000000005",
+            "newFlatFile": false,
+            "newObject": false,
+            "showBusinessNames": false,
+            "naturalOrder": true,
+            "truncateTarget": false,
+            "bulkApiDBTarget": false,
+            "customFuncCfg": {{
+                "@type": "customFuncConfig",
+                "id": -1,
+                "connections": [],
+                "inputMap": [],
+                "outputFields": []
+            }},
+            "tgtFieldRefs": {{}},
+            "targetUpdateColumns": [],
+            "extendedObject": {{
+                "@type": "extendedObject",
+                "object": {{
+                    "@type": "mObject",
+                    "name": "LeadActivity",
+                    "label": "LeadActivity",
+                    "metadataUpdated": false,
+                    "relations": [],
+                    "children": []
+                }},
+                "filters": [],
+                "sortFields": []
+            }},
+            "runtimeAttrs": {{}},
+            "isRESTModernSource": true,
+            "isFileList": false,
+            "handleSpecialChars": false,
+            "frsAsset": false,
+            "dynamicFileName": false,
+            "currentlyProcessedFileName": false,
+            "tgtObjectAttributes": {{}},
+            "runtimeParameterData": {{
+                "@type": "mtTaskRuntimeParameterData",
+                "isConnectionRuntimeParameter": false,
+                "isObjectRuntimeParameter": false
+            }},
+            "overriddenFields": []
+        }},
+        {{
+            "@type": "mtTaskParameter",
+            "id": 140541097,
+            "name": "$t_marketo_lead_activity$",
+            "type": "TARGET",
+            "label": "t_marketo_lead_activity",
+            "uiProperties": {{
+                "connectionParameterized": "false",
+                "objectParameterized": "false",
+                "visible": "false",
+                "defaultTargetUpdateColumns": ""
+            }},
+            "targetConnectionId": "012BI80B000000000008",
+            "targetObject": "ODS_STG_DB/MARKETO/STG_LEAD_ACTIVITY",
+            "targetObjectLabel": "STG_LEAD_ACTIVITY",
+            "newFlatFile": false,
+            "newObject": false,
+            "showBusinessNames": false,
+            "naturalOrder": true,
+            "truncateTarget": false,
+            "bulkApiDBTarget": false,
+            "operationType": "Insert",
+            "customFuncCfg": {{
+                "@type": "customFuncConfig",
+                "id": -1,
+                "connections": [],
+                "inputMap": [],
+                "outputFields": []
+            }},
+            "tgtFieldRefs": {{}},
+            "targetUpdateColumns": [],
+            "extendedObject": {{
+                "@type": "extendedObject",
+                "filters": [],
+                "sortFields": []
+            }},
+            "runtimeAttrs": {{}},
+            "isRESTModernSource": true,
+            "isFileList": false,
+            "handleSpecialChars": false,
+            "frsAsset": false,
+            "dynamicFileName": false,
+            "currentlyProcessedFileName": false,
+            "tgtObjectAttributes": {{}},
+            "runtimeParameterData": {{
+                "@type": "mtTaskRuntimeParameterData",
+                "isConnectionRuntimeParameter": false,
+                "isObjectRuntimeParameter": false
+            }},
+            "overriddenFields": []
+        }}
+    ],
+    "sequences": [],
+    "inOutParameters": [
+        {{
+            "@type": "mtTaskInOutParameter",
+            "id": "-1",
+            "name": "LeadActivityTypeIds",
+            "description": "",
+            "initialValue": "",
+            "datatype": "STRING",
+            "precision": "512",
+            "scale": "0",
+            "retentionPolicy": "ON_SUCCESS_OR_WARNING",
+            "aggregationType": "MAX",
+            "currentValue": "{$ActTypeIds}"
+        }},
+        {{
+            "@type": "mtTaskInOutParameter",
+            "id": "-1",
+            "name": "GeneralStartDate",
+            "description": "",
+            "initialValue": "",
+            "datatype": "STRING",
+            "precision": "255",
+            "scale": "0",
+            "retentionPolicy": "ON_SUCCESS_OR_WARNING",
+            "aggregationType": "MAX",
+            "currentValue": "{$GeneralStartDate }"
+        }},
+        {{
+            "@type": "mtTaskInOutParameter",
+            "id": "-1",
+            "name": "GeneralEndDate",
+            "description": "",
+            "initialValue": "",
+            "datatype": "STRING",
+            "precision": "255",
+            "scale": "0",
+            "retentionPolicy": "ON_SUCCESS_OR_WARNING",
+            "aggregationType": "MAX",
+            "currentValue": "{$GeneralEndDate }"
+        }},
+        {{
+            "@type": "mtTaskInOutParameter",
+            "id": "-1",
+            "name": "GeneralSinceDate",
+            "description": "",
+            "initialValue": "",
+            "datatype": "STRING",
+            "precision": "255",
+            "scale": "0",
+            "retentionPolicy": "ON_SUCCESS_OR_WARNING",
+            "aggregationType": "MAX",
+            "currentValue": "{$GeneralSinceDate }"
+        }}
+    ],
+    "connRuntimeAttrs": []
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="CreateMCTResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">MCTData</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="UpdateMCT"
+                       maxRedirects="100"
+                       name="UpdateMCT"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="4ToK079hTWNiKBRANOKD2r"
+                                type="string"/>
+                     <parameter name="saasServer"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="ActTypeIds"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="GeneralSinceDate"
+                                nogen="true"
+                                required="false"
+                                testWith="2020-11-09"
+                                type="string"/>
+                     <parameter name="GeneralStartDate"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="GeneralEndDate"
+                                nogen="true"
+                                required="false"
+                                testWith="2020-11-8"
+                                type="string"/>
+                     <parameter name="TaskId"
+                                nogen="true"
+                                required="true"
+                                testWith="012BI80Z0000000001XT"
+                                type="string"/>
+                     <parameter name="Rundate"
+                                nogen="true"
+                                required="false"
+                                testWith="2021-05-31"
+                                type="date"/>
+                     <parameter name="Env"
+                                nogen="true"
+                                required="false"
+                                testWith="D04"
+                                type="string"/>
+                     <parameter name="CollectionName"
+                                nogen="true"
+                                required="false"
+                                testWith="CIWorkloadRoot_collection"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$saasServer}/api/v2/mttask/{$TaskId}"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Update-Mode">PARTIAL</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+    "@type": "mtTask",       
+    "inOutParameters": [
+       {
+        let $actTypeIdExp:= if(exists($ActTypeIds) and string-length($ActTypeIds)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "LeadActivityTypeIds","currentValue": "', $ActTypeIds, '"}')
+		 else ()
+		 
+		 let $startDateExp:= if(exists($GeneralStartDate) and string-length($GeneralStartDate)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "GeneralStartDate","currentValue": "', $GeneralStartDate, '"}')
+		 else ()
+		 
+		 let $endDateExp:= if(exists($GeneralEndDate) and string-length($GeneralEndDate)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "GeneralEndDate","currentValue": "', $GeneralEndDate, '"}')
+		 else ()
+		 
+		 let $sinceDateExp:= if(exists($GeneralSinceDate) and string-length($GeneralSinceDate)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "GeneralSinceDate","currentValue": "', $GeneralSinceDate, '"}')
+		 else ()
+		 
+         let $RundateExp:= if(exists($Rundate) and string-length($Rundate)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "Rundate","currentValue": "', $Rundate, '"}')
+		 else()
+		 
+		 let $EnvExp:= if(exists($Env) and string-length($Env)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "Env","currentValue": "', $Env, '"}')
+		 else ()
+		 
+		 let $CollectionNameExp:= if(exists($CollectionName) and string-length($CollectionName)&gt; 0)
+		 then 
+		 concat('{"@type": "mtTaskInOutParameter","id": "-1","name": "CollectionName","currentValue": "', $CollectionName, '"}')
+		 else ()
+		 
+         return string-join(($actTypeIdExp,$startDateExp,$endDateExp,$sinceDateExp,$RundateExp,$EnvExp,$CollectionNameExp), ',')
+       }
+    ]    
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="UpdateMCTResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">MCTData</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetActivityLog"
+                       maxRedirects="100"
+                       name="GetActivityLog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="8DpOOGx2jr6elJoH5lQx4a"
+                                type="string"/>
+                     <parameter name="taskId"
+                                nogen="true"
+                                required="false"
+                                testWith="012BI80G00000000000C"
+                                type="string"/>
+                     <parameter name="saasServer"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="runId"
+                                nogen="true"
+                                required="false"
+                                testWith="10"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$saasServer}/api/v2/activity/activityLog?taskId={$taskId}&amp;amp;runId={$runId}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="transformationentries"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">transformationEntries</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="logentryitems"
+                            property="logentryitems"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">logEntryItemAttrs</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetSessionlog"
+                       maxRedirects="100"
+                       name="GetSessionlog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="2JpJHoKU9AufyZMxVM7IKK"
+                                type="string"/>
+                     <parameter name="saasServer"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter name="id"
+                                nogen="true"
+                                required="false"
+                                testWith="012BI8C1000000000O3B"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$saasServer}/api/v2/activity/activityLog/{$id}/sessionLog"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field attachments="true"
+                            description=""
+                            name="GetSessionlog"
+                            type="attachment"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Logmi"
+                       maxRedirects="100"
+                       name="Logmi"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-us.informaticacloud.com/identity-service/api/v1/Login"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+"username": "{$Username}",
+"password": "{$Password}"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="sessionId"
+                            property="sessionId"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetMilog"
+                       maxRedirects="100"
+                       name="GetMilog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="runId"
+                                nogen="true"
+                                required="false"
+                                testWith="1240"
+                                type="string"/>
+                     <parameter name="sessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="hNfBHLd6IuEenrGgr9jpAT"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://na1.dm-us.informaticacloud.com/mftsaas/api/v1/job/{$runId}/status"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="IDS-SESSION-ID">{$sessionId}</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="uiProperties">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="isMsrcFilterParameterized" type="boolean"/>
+                     <field name="connectionParameterized" type="string"/>
+                     <field name="visible" type="string"/>
+                     <field name="isMsrcSortParameterized" type="boolean"/>
+                     <field name="objectParameterized" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="MCTData">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="mappingId" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="inOutParameters" type="reference">
+                        <options>
+                           <option name="referenceTo">inOutParameters</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="parameterFileEncoding" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="sequences" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="enableCrossSchemaPushdown" type="string"/>
+                     <field name="autoTunedAppliedType" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="sessionProperties" type="string"/>
+                     <field name="enableParallelRun" type="string"/>
+                     <field name="connRuntimeAttrs" type="string"/>
+                     <field name="autoTunedApplied" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="shortDescription" type="string"/>
+                     <field name="verbose" type="string"/>
+                     <field name="serverlessProperties" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="paramFileType" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="parameters" type="objectlist">
+                        <options>
+                           <option name="referenceTo">parameters</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="maxLogs" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="inOutParameters">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="aggregationType" type="string"/>
+                     <field name="datatype" type="string"/>
+                     <field name="precision" type="int"/>
+                     <field name="name" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="scale" type="int"/>
+                     <field name="id" type="int"/>
+                     <field name="retentionPolicy" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="initialValue" type="string"/>
+                     <field name="currentValue" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="parameters">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="currentlyProcessedFileName" type="string"/>
+                     <field name="naturalOrder" type="string"/>
+                     <field name="extendedObject" type="reference">
+                        <options>
+                           <option name="referenceTo">extendedObject</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="fetchMode" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="customFuncCfg" type="reference">
+                        <options>
+                           <option name="referenceTo">customFuncCfg</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="frsAsset" type="string"/>
+                     <field name="tgtObjectAttributes" type="string"/>
+                     <field name="handleSpecialChars" type="string"/>
+                     <field name="runtimeAttrs" type="string"/>
+                     <field name="newObject" type="string"/>
+                     <field name="isFileList" type="boolean"/>
+                     <field name="dynamicFileName" type="string"/>
+                     <field name="id" type="int"/>
+                     <field name="tgtFieldRefs" type="string"/>
+                     <field name="newFlatFile" type="string"/>
+                     <field name="isRESTModernSource" type="boolean"/>
+                     <field name="bulkApiDBTarget" type="string"/>
+                     <field name="sourceConnectionId" type="string"/>
+                     <field name="runtimeParameterData" type="reference">
+                        <options>
+                           <option name="referenceTo">runtimeParameterData</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="showBusinessNames" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="targetUpdateColumns" type="string"/>
+                     <field name="overriddenFields" type="string"/>
+                     <field name="truncateTarget" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="uiProperties" type="string"/>
+                     <field name="targetObject" type="string"/>
+                     <field name="targetObjectLabel" type="string"/>
+                     <field name="targetConnectionId" type="string"/>
+                     <field name="operationType" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="extendedObject">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="sortFields" type="string"/>
+                     <field name="filters" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="object" type="reference">
+                        <options>
+                           <option name="referenceTo">object</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="object">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="metadataUpdated" type="string"/>
+                     <field name="children" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="relations" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="customFuncCfg">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="outputFields" type="string"/>
+                     <field name="id" type="int"/>
+                     <field name="type" type="string"/>
+                     <field name="inputMap" type="string"/>
+                     <field name="connections" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="runtimeParameterData">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="isObjectRuntimeParameter" type="boolean"/>
+                     <field name="type" type="string"/>
+                     <field name="isConnectionRuntimeParameter" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="emptyName" type="reference">
+                        <options>
+                           <option name="referenceTo">emptyName</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="emptyName">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="scheduleName" type="string"/>
+                     <field name="endTimeUtc" type="string"/>
+                     <field name="successTargetRows" type="int"/>
+                     <field name="hasStopOnErrorRecord" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="failedSourceRows" type="int"/>
+                     <field name="stopOnError" type="string"/>
+                     <field name="successSourceRows" type="int"/>
+                     <field name="entries" type="objectlist">
+                        <options>
+                           <option name="referenceTo">entries</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="objectName" type="string"/>
+                     <field name="failedTargetRows" type="int"/>
+                     <field name="startTime" type="string"/>
+                     <field name="totalSuccessRows" type="int"/>
+                     <field name="id" type="string"/>
+                     <field name="runId" type="int"/>
+                     <field name="endTime" type="string"/>
+                     <field name="state" type="int"/>
+                     <field name="totalFailedRows" type="int"/>
+                     <field name="runContextType" type="string"/>
+                     <field name="objectId" type="string"/>
+                     <field name="startTimeUtc" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="entries">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="scheduleName" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="endTimeUtc" type="string"/>
+                     <field name="successTargetRows" type="int"/>
+                     <field name="type" type="string"/>
+                     <field name="failedSourceRows" type="int"/>
+                     <field name="successSourceRows" type="int"/>
+                     <field name="transformationEntries" type="objectlist">
+                        <options>
+                           <option name="referenceTo">transformationEntries</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="failedTargetRows" type="int"/>
+                     <field name="startTime" type="string"/>
+                     <field name="id" type="int"/>
+                     <field name="state" type="int"/>
+                     <field name="totalFailedRows" type="int"/>
+                     <field name="logEntryItemAttrs" type="reference">
+                        <options>
+                           <option name="referenceTo">logEntryItemAttrs</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="hasStopOnErrorRecord" type="string"/>
+                     <field name="errorMsg" type="string"/>
+                     <field name="subTaskEntries" type="string"/>
+                     <field name="stopOnError" type="string"/>
+                     <field name="entries" type="string"/>
+                     <field name="objectName" type="string"/>
+                     <field name="totalSuccessRows" type="int"/>
+                     <field name="runId" type="int"/>
+                     <field name="endTime" type="string"/>
+                     <field name="runContextType" type="string"/>
+                     <field name="startTimeUtc" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="transformationEntries">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="failedRows" type="int"/>
+                     <field name="successRows" type="int"/>
+                     <field name="txType" type="string"/>
+                     <field name="id" type="double"/>
+                     <field name="type" type="string"/>
+                     <field name="txName" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="logEntryItemAttrs">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="IS_SERVER_LESS" type="boolean"/>
+                     <field name="CONSUMED_COMPUTE_UNITS" type="double"/>
+                     <field name="REQUESTED_COMPUTE_UNITS" type="double"/>
+                     <field name="SessionLogFileName" type="string"/>
+                     <field name="ERROR_CODE" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="type">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="saveattachment" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>2GOHs88SIQJhO0fWiyFyic</types1:GUID>
+      <types1:DisplayName>IICS_API_Service_V2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-12T14:53:36.798Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
