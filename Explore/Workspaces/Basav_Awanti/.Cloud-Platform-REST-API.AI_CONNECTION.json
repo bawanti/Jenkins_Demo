@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "8ck7thmJ4oEiT2sJvGRL0x",
+      "objectName": "Cloud-Platform-REST-API",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Workspaces/Basav_Awanti",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Connection used for Cloud Platform REST APIs.",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "1BjMOVxl8KAiwkY35UGVKH"
+         ],
+         "repoInfo": {
+            "repoHandle": "p7aa-gt-15572194-2021-08-20T22:39:05.924Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "1BjMOVxl8KAiwkY35UGVKH",
+      "objectName": "Cloud-Platform-REST-API",
+      "objectType": "AI_SERVICE_CONNECTOR",
+      "path": "/Explore/Workspaces/Basav_Awanti",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Used to interact with IICS Cloud Platform APIs. This connector can be used to interact with \nPlatform Verion2, Platform Verion3, Data Integration & Mass Ingestion REST APIs. \n\nREST APIs Documentation Link https://docs.informatica.com/integration-cloud/cloud-platform/current-version/rest-api-reference/preface.html",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "98dpgbcggaaaaa-gt-26841310-2021-08-20T16:31:32.969Z::svc.xml"
+         }
+      }
+   }
+]

@@ -1,0 +1,959 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>drZQT53nQciSrZM-gt-24918087-2021-08-19T22:09:35.052Z::gt.xml</types1:EntryId>
+      <types1:Name>ExpressAnalyticsGuide</types1:Name>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description>This guide will help users to 
+1. Monitor activity logs 
+2. Create integration tasks
+3. Assign a schedule</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>bawanti@demo.informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2021-08-19T22:09:35Z</types1:CreationDate>
+      <types1:ModifiedBy>bawanti@demo.informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-08-24T17:03:23Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>bawanti@demo.informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2021-08-24T17:01:39Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.ExpressAnalyticsGuide/ExpressAnalyticsGuide.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="ExpressAnalyticsGuide"
+                         doneOnEndStep="false"
+                         name="ExpressAnalyticsGuide"
+                         runAsUser="$current">
+            <description>This guide will help users to 
+1. Monitor activity logs 
+2. Create integration tasks
+3. Assign a schedule</description>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="ConnectorList" type="picklist">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_rowLimit" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ActivityMonitorDetails" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DataSource" type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Amazon RDS","value":"Amazon RDS"},{"label":"Amazon S3","value":"Amazon S3"},{"label":"Azure Data Lake Store","value":"Azure Data Lake Store"},{"label":"Google Cloud Storage","value":"Google Cloud Storage"},{"label":"NetSuite","value":"NetSuite"},{"label":"Salesforce","value":"Salesforce"}]</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_NameSuffix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServerUrl" type="url">
+                  <options>
+                     <option name="urlDisplayReadonlyAs">Link</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityToken" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Salesforce_Object" type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Account","value":"Account"},{"label":"Contact","value":"Contact"}]</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_NameValueList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">Cloud-Platform-REST-API:nameValue</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8ck7thmJ4oEiT2sJvGRL0x</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ReqAttributesExist" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Message" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_S3ConnectionInfo" type="reference">
+                  <options>
+                     <option name="referenceTo">Cloud-Platform-REST-API:connectionInfo</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8ck7thmJ4oEiT2sJvGRL0x</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MappingName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_S3ConnectionName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PathType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MappingTaskName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SelectedSchedule" type="reference">
+                  <options>
+                     <option name="referenceTo">Cloud-Platform-REST-API:schedule</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8ck7thmJ4oEiT2sJvGRL0x</option>
+                  </options>
+               </field>
+            </tempFields>
+            <possibleOutcomes>
+               <outcome id="outcome_ksji1cxq">End</outcome>
+               <outcome id="outcome_kspbz9sm">Integration Job Created</outcome>
+            </possibleOutcomes>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="jd300kk3">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null" id="jd300kk3_ksjh86lz" targetScreen="ksjh86lz">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="ks6557pq">
+                  <title>Main Menu</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="font-size: 18pt;"&gt;&lt;strong&gt;Express Analytics Integration&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-size: 14pt;"&gt;&lt;strong&gt;Running Jobs&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="activityMonitorResponse&gt;activityMonitorEntry" name="output.activityMonitorResponse[1]/activityMonitorEntry" readonly="readonly" type="text" value="activityMonitorResponse&gt;activityMonitorEntry"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-size: 14pt;"&gt;&lt;strong&gt;Completed Jobs&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="activityLogResponse&gt;activityLogEntry" name="output.activityLogResponse[1]/activityLogEntry" readonly="readonly" type="text" value="activityLogResponse&gt;activityLogEntry"&gt;&amp;nbsp;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="ks6557pq_ks6557qa" targetScreen="ks6557qa">
+                        <text>New Integration</text>
+                     </action>
+                     <action alt="null" id="ks6557pq_ks6858ed" targetScreen="ks6858ed">
+                        <text>Refresh Jobs</text>
+                     </action>
+                     <action alt="null" id="ks6557pq_ks6858e3" targetScreen="ks6858e3">
+                        <text>Close</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.activityLogResponse[1]/activityLogEntry"
+                                     readonly="true"
+                                     renderingType="table"
+                                     required="false"
+                                     type="objectlist">
+                        <options>
+                           <option hide="true" name="referenceTo">Cloud-Platform-REST-API:activityLogEntry</option>
+                           <option name="relationshipName">Child</option>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"objectName","type":"string","label":"Name","renderingType":"string"},{"name":"taskStateDescription","type":"string","label":"State","renderingType":"string"},{"name":"taskType","type":"string","label":"Type","renderingType":"string"},{"name":"runId","type":"int","label":"Run Id","renderingType":"int"},{"name":"successSourceRows","type":"int","label":"Success Source Rows","renderingType":"int"},{"name":"successTargetRows","type":"int","label":"Success Target Rows","renderingType":"int"},{"name":"failedSourceRows","type":"int","label":"Failed Source Rows","renderingType":"int"},{"name":"failedTargetRows","type":"int","label":"Failed Target Rows","renderingType":"int"},{"name":"startTime","type":"string","label":"Start Time","renderingType":"string"},{"name":"endTime","type":"string","label":"End Time","renderingType":"string"},{"name":"errorMsg","type":"string","label":"Error Message","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.activityMonitorResponse[1]/activityMonitorEntry"
+                                     readonly="true"
+                                     renderingType="table"
+                                     required="false"
+                                     type="objectlist">
+                        <options>
+                           <option hide="true" name="referenceTo">Cloud-Platform-REST-API:activityMonitorEntry</option>
+                           <option name="relationshipName">Child</option>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"taskName","type":"string","label":"Name","renderingType":"string"},{"name":"executionState","type":"string","label":"State","renderingType":"string"},{"name":"taskType","type":"string","label":"Type","renderingType":"string"},{"name":"runId","type":"int","label":"Run Id","renderingType":"int"},{"name":"successSourcerows","type":"int","label":"Success Source Rows","renderingType":"int"},{"name":"successTargetRows","type":"int","label":"Success Target Rows","renderingType":"int"},{"name":"failedSourceRows","type":"int","label":"Failed Source Rows","renderingType":"int"},{"name":"failedTargetRows","type":"int","label":"Failed Target Rows","renderingType":"int"},{"name":"startTime","type":"datetime","label":"Start Time","renderingType":"datetime"},{"name":"endTime","type":"datetime","label":"End Time","renderingType":"datetime"},{"name":"errorMsg","type":"string","label":"Error Message","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="ks6557qa">
+                  <title>Data Sources</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="font-size: 14pt;"&gt;New Integration - Select Data Source&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-size: 10pt;"&gt;Select Data Source and Click Continue&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_DataSource (temporary)" name="temp.tmp_DataSource" type="text" value="tmp_DataSource (temporary)*"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="ks6557qa_kspbz9ne" targetScreen="kspbz9ne">
+                        <text>Continue</text>
+                     </action>
+                     <action alt="null" id="ks6557qa_kspbz9nz" targetScreen="kspbz9nz">
+                        <text>Main Menu</text>
+                     </action>
+                     <action alt="null" id="ks6557qa_kspbz9op" targetScreen="kspbz9op">
+                        <text>Close</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_DataSource"
+                                     readonly="false"
+                                     required="false"
+                                     type="picklist">
+                        <options>
+                           <option name="values">[{"label":"Amazon RDS","value":"Amazon RDS"},{"label":"Amazon S3","value":"Amazon S3"},{"label":"Azure Data Lake Store","value":"Azure Data Lake Store"},{"label":"Google Cloud Storage","value":"Google Cloud Storage"},{"label":"NetSuite","value":"NetSuite"},{"label":"Salesforce","value":"Salesforce"}]</option>
+                           <option name="required">true</option>
+                           <option name="defaultvalue">Amazon RDS</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="kskv45vu">
+                  <title>Salesforce Connection Details</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="font-size: 14pt;"&gt;Salesforce Integration&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;span style="font-size: 12pt;"&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="tmp_Message (temporary)" name="temp.tmp_Message" readonly="readonly" type="text" value="tmp_Message (temporary)"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Please provide following connection details&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 28.9493%; height: 126px;" cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr style="height: 21px;"&gt;
+&lt;td style="width: 10.0351%; height: 21px;"&gt;Name Suffix&lt;/td&gt;
+&lt;td style="width: 22.9131%; height: 21px;"&gt;&lt;input class="" title="tmp_NameSuffix (temporary)" name="temp.tmp_NameSuffix" type="text" value="tmp_NameSuffix (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 21px;"&gt;
+&lt;td style="width: 10.0351%; height: 21px;"&gt;User Name&lt;/td&gt;
+&lt;td style="width: 22.9131%; height: 21px;"&gt;&lt;input class="" title="tmp_UserName (temporary)" name="temp.tmp_UserName" type="text" value="tmp_UserName (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 21px;"&gt;
+&lt;td style="width: 10.0351%; height: 21px;"&gt;&lt;span style="color: #000000;"&gt;Password&lt;/span&gt;&lt;/td&gt;
+&lt;td style="width: 22.9131%; height: 21px;"&gt;&lt;span style="color: #000000;"&gt;&lt;input class="" title="tmp_Password (temporary)" name="temp.tmp_Password" type="text" value="tmp_Password (temporary)"&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 21px;"&gt;
+&lt;td style="width: 10.0351%; height: 21px;"&gt;Security Token&lt;/td&gt;
+&lt;td style="width: 22.9131%; height: 21px;"&gt;&lt;input class="" title="tmp_SecurityToken (temporary)" name="temp.tmp_SecurityToken" type="text" value="tmp_SecurityToken (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 21px;"&gt;
+&lt;td style="width: 10.0351%; height: 21px;"&gt;Service URL&lt;/td&gt;
+&lt;td style="width: 22.9131%; height: 21px;"&gt;&lt;input class="" title="tmp_ServerUrl (temporary)" name="temp.tmp_ServerUrl" type="text" value="tmp_ServerUrl (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 21px;"&gt;
+&lt;td style="width: 10.0351%; height: 21px;"&gt;Object Name&lt;/td&gt;
+&lt;td style="width: 22.9131%; height: 21px;"&gt;&lt;input class="" title="tmp_Salesforce_Object (temporary)" name="temp.tmp_Salesforce_Object" type="text" value="tmp_Salesforce_Object (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Schedule&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Select a schedule for the integration job&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_SelectedSchedule (temporary)" name="temp.tmp_SelectedSchedule" type="text" value="tmp_SelectedSchedule (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="kskv45vu_ksorgugv" targetScreen="ksorgugv">
+                        <text>Continue</text>
+                     </action>
+                     <action alt="null" id="kskv45vu_kskv461u" targetScreen="kskv461u">
+                        <text>Main Menu</text>
+                     </action>
+                     <action alt="null" id="kskv45vu_kskv4619" targetScreen="kskv4619">
+                        <text>Close</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_NameSuffix"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="text_size">25</option>
+                           <option name="required">false</option>
+                           <option name="hover_text">This will be used to suffix the name of the connection and mapping task. Example Connection will be named as Salesforce_&lt;Suffix&gt; and Mapping Task as mt_salesforce_acct_to_s3_&lt;suffix&gt;</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_UserName"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="text_size">25</option>
+                           <option name="required">false</option>
+                           <option name="hover_text">Salesforce User Name</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_SecurityToken"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="text_size">25</option>
+                           <option name="hover_text">Salesforce Security Token (case-sensitive)</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_ServerUrl"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                           <option name="hover_text">Service URL , example https://login.salesforce.com/services/Soap/u/48.0</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_Salesforce_Object"
+                                     readonly="false"
+                                     required="false"
+                                     type="picklist">
+                        <options>
+                           <option name="values">[{"label":"Account","value":"Account"},{"label":"Contact","value":"Contact"}]</option>
+                           <option name="required">false</option>
+                           <option name="hover_text">Select the object required for the integration</option>
+                           <option hide="true" name="valuelist.source">searchservice</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_Message"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_Password"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="text_size">1</option>
+                           <option name="hover_text">Salesforce Password</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_SelectedSchedule"
+                                     readonly="false"
+                                     renderingType="table"
+                                     required="false"
+                                     type="reference">
+                        <options>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"name","type":"string","label":"Name","renderingType":"string"},{"name":"interval","type":"string","label":"Interval","renderingType":"string"},{"name":"frequency","type":"int","label":"Frequency","renderingType":"int"},{"name":"timeZoneId","type":"string","label":"Time Zone","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option name="referenceTo">Cloud-Platform-REST-API:schedule</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">8ck7thmJ4oEiT2sJvGRL0x</option>
+                           <option hide="true" name="valuelist.source">objectListField</option>
+                           <option hide="true" name="valuelist.objectlistfield">output.scheduleResponse[1]/schedule</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="ksp42j8v">
+                  <title>Integration Task Details</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;span style="font-size: 14pt;"&gt;Integration Task Successfully Created&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Below are the details of the integration task.&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 39.2275%; height: 94px;" cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr style="height: 17px;"&gt;
+&lt;td style="width: 7.7372%; height: 17px;"&gt;Task Name&lt;/td&gt;
+&lt;td style="width: 32.1388%; height: 17px;"&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="createMappingTaskResponse&gt;name" name="output.createMappingTaskResponse[1]/name" readonly="readonly" type="text" value="createMappingTaskResponse&gt;name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 17px;"&gt;
+&lt;td style="width: 7.7372%; height: 17px;"&gt;Description&lt;/td&gt;
+&lt;td style="width: 32.1388%; height: 17px;"&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="createMappingTaskResponse&gt;description" name="output.createMappingTaskResponse[1]/description" readonly="readonly" type="text" value="createMappingTaskResponse&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="width: 7.7372%;"&gt;Source Connection&lt;/td&gt;
+&lt;td style="width: 32.1388%;"&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.connectionInfo[1]/name" readonly="readonly" type="text" value="connectionInfo&gt;name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="width: 7.7372%;"&gt;Target Connection&lt;/td&gt;
+&lt;td style="width: 32.1388%;"&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="tmp_S3ConnectionInfo&gt;name" name="temp.tmp_S3ConnectionInfo[1]/name" readonly="readonly" type="text" value="tmp_S3ConnectionInfo&gt;name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="width: 7.7372%;"&gt;Schedule&lt;/td&gt;
+&lt;td style="width: 32.1388%;"&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="tmp_SelectedSchedule&gt;name" name="temp.tmp_SelectedSchedule[1]/name" readonly="readonly" type="text" value="tmp_SelectedSchedule&gt;name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="ksp42j8v_kspbz9is" targetScreen="kspbz9is">
+                        <text>Main Menu</text>
+                     </action>
+                     <action alt="null" id="ksp42j8v_kspbz9jk" targetScreen="kspbz9jk">
+                        <text>Close</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.createMappingTaskResponse[1]/name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.createMappingTaskResponse[1]/description"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.connectionInfo[1]/name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_S3ConnectionInfo[1]/name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_SelectedSchedule[1]/name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <service id="ksjh86li">
+                  <title>Infa Cloud Login</title>
+                  <serviceName>Cloud-Platform-REST-API:Login</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <actions>
+                     <action alt="null" id="ksjh86li_ksjh86ln" targetScreen="ksjh86ln">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksjh86ln">
+                  <title>Completed Jobs - Get Activity Log</title>
+                  <serviceName>Cloud-Platform-REST-API:ActivityLog</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksjhijnq"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksjhijnr" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksjhijnv" name="rowLimit" source="field" updatable="true">temp.tmp_rowLimit</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksjh86ln_ksji1cxw" targetScreen="ksji1cxw">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksji1cxw">
+                  <title>Active Jobs - Get Activity Monitor</title>
+                  <serviceName>Cloud-Platform-REST-API:ActivityMonitor</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksjhbpn7"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksjhbpn8" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksjhbpn9" name="details" source="field" updatable="true">temp.tmp_ActivityMonitorDetails</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksji1cxw_kskiffwe" targetScreen="kskiffwe">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksoyy1cx">
+                  <title>Get Target Connection Details</title>
+                  <serviceName>Cloud-Platform-REST-API:GetConnection</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksorwazb"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksorwazc" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksorwazd"
+                                name="connectionName"
+                                source="field"
+                                updatable="true">temp.tmp_S3ConnectionName</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksoyy1cx_ksoyy1gn" targetScreen="ksoyy1gn">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="kspaatvn">
+                  <title>Get Schedules</title>
+                  <serviceName>Cloud-Platform-REST-API:GetSchedule</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksos6et1"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksos6et2" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="kspaatvn_kskv45uk" targetScreen="kskv45uk">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksp42jcq">
+                  <title>CDI - Create Connection</title>
+                  <serviceName>Cloud-Platform-REST-API:CreateConnection</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksorx0wi"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksorx0wj" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksorx0wk"
+                                name="nameValueList"
+                                source="field"
+                                updatable="true">temp.tmp_NameValueList</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksp42jcq_ksp42jbz" targetScreen="ksp42jbz">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksp42jbz">
+                  <title>Get Mapping Details by Name</title>
+                  <serviceName>Cloud-Platform-REST-API:GetMappingByName</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksorezss"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksorezst" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksorezsu" name="name" source="field" updatable="true">temp.tmp_MappingName</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksp42jbz_ksp42jab" targetScreen="ksp42jab">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksp42jab">
+                  <title>Get Container Id - Lookup Folder Name</title>
+                  <serviceName>Cloud-Platform-REST-API:Lookup</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksory3tl"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksory3tm" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksory3tn" name="path" source="field" updatable="true">temp.tmp_Path</parameter>
+                     <parameter id="ksory3to" name="type" source="field" updatable="true">temp.tmp_PathType</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksp42jab_ksp42j9g" targetScreen="ksp42j9g">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="ksp42j9g">
+                  <title>Create Mapping Task</title>
+                  <serviceName>Cloud-Platform-REST-API:CreateMappingTask</serviceName>
+                  <serviceGUID>8ck7thmJ4oEiT2sJvGRL0x</serviceGUID>
+                  <serviceInput>
+                     <parameter id="ksoso3jj"
+                                name="icSessionId"
+                                source="field"
+                                updatable="true">output.loginResponse[1]/icSessionId</parameter>
+                     <parameter id="ksoso3jk" name="serverUrl" source="field" updatable="true">output.loginResponse[1]/serverUrl</parameter>
+                     <parameter id="ksoso3jl"
+                                name="containerId"
+                                source="field"
+                                updatable="true">output.lookupResponse[1]/objects[1]/id</parameter>
+                     <parameter id="ksoso3jm" name="name" source="field" updatable="true">temp.tmp_MappingTaskName</parameter>
+                     <parameter id="ksoso3jn"
+                                name="description"
+                                source="constant"
+                                updatable="false">This is mapping task was programmatically created using the details provided by the user from the Screenflow Guide</parameter>
+                     <parameter id="ksoso3jo"
+                                name="runtimeEnvironmentId"
+                                source="field"
+                                updatable="true">temp.tmp_S3ConnectionInfo[1]/runtimeEnvironmentId</parameter>
+                     <parameter id="ksoso3jp" name="mappingId" source="field" updatable="true">output.mappingInfo[1]/id</parameter>
+                     <parameter id="ksoso3jq" name="srcObject" source="field" updatable="true">temp.tmp_Salesforce_Object</parameter>
+                     <parameter id="ksoso3jr"
+                                name="sourceConnectionId"
+                                source="field"
+                                updatable="true">output.connectionInfo[1]/id</parameter>
+                     <parameter id="ksoso3js"
+                                name="targetConnectionId"
+                                source="field"
+                                updatable="true">temp.tmp_S3ConnectionInfo[1]/id</parameter>
+                     <parameter id="ksoso3jt" name="scheduleId" source="field" updatable="true">temp.tmp_SelectedSchedule[1]/id</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="ksp42j9g_ksp42j8v" targetScreen="ksp42j8v">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <endScreen dontShowScreen="true" id="kspbz9op" outcomeId="outcome_ksji1cxq">
+                  <title>Close Guide</title>
+                  <body contentType="text/html">&lt;p&gt;Click &lt;strong&gt;Close Guide --&amp;gt; Done&lt;/strong&gt;&amp;nbsp;button at the bottom of the screen to close the guide.&lt;/p&gt;</body>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text>Done</text>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="kskv4619" outcomeId="outcome_ksji1cxq">
+                  <title>Close Guide</title>
+                  <body contentType="text/html">&lt;p&gt;Click &lt;strong&gt;Close Guide --&amp;gt; Done&lt;/strong&gt;&amp;nbsp;button at the bottom of the screen to close the guide.&lt;/p&gt;</body>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text>Done</text>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="kspbz9jk" outcomeId="outcome_kspbz9sm">
+                  <title>Close Guide</title>
+                  <body contentType="text/html">&lt;p&gt;Click &lt;strong&gt;Close Guide --&amp;gt; Done&lt;/strong&gt;&amp;nbsp;button at the bottom of the screen to close the guide.&lt;/p&gt;</body>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text>Done</text>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="ks6858e3" outcomeId="outcome_ksji1cxq">
+                  <title>Close Guide</title>
+                  <body contentType="text/html">&lt;p&gt;Click &lt;strong&gt;Close Guide --&amp;gt; Done&lt;/strong&gt;&amp;nbsp;button at the bottom of the screen to close the guide.&lt;/p&gt;</body>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text>Done</text>
+                  </screenActionLabel>
+               </endScreen>
+               <empty gatewayType="exclusive" id="ksqbex3l">
+                  <actions/>
+               </empty>
+               <empty gatewayType="exclusive" id="kspbz9ne">
+                  <actions>
+                     <action alt="null" id="kspbz9ne_ksoyy1cx" targetScreen="ksoyy1cx">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="kskv45ut">
+                  <actions>
+                     <action alt="null" id="kskv45ut_ksp42jcq" targetScreen="ksp42jcq">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="kskv460g">
+                  <actions>
+                     <action alt="" id="kskv460g_kskv45ut" targetScreen="kskv45ut">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="ksorgukn">
+                  <actions>
+                     <action alt="" id="ksorgukn_kskv460g" targetScreen="kskv460g">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="ksqbex1s">
+                  <actions/>
+               </empty>
+               <jumpTo id="kspbz9nz" targetTitle="Main Menu">
+                  <actions>
+                     <action alt="null" id="kspbz9nz_ks6557pq" targetScreen="ks6557pq">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <jumpTo id="ksorgula" targetTitle="Salesforce Connection Details">
+                  <actions>
+                     <action alt="null" id="ksorgula_kskv45vu" targetScreen="kskv45vu">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <jumpTo id="kskv461u" targetTitle="Main Menu">
+                  <actions>
+                     <action alt="null" id="kskv461u_ks6557pq" targetScreen="ks6557pq">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <jumpTo id="kspbz9is" targetTitle="Main Menu">
+                  <actions>
+                     <action alt="null" id="kspbz9is_ks6557pq" targetScreen="ks6557pq">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <jumpTo id="ks6858ed" targetTitle="Completed Jobs - Get Activity Log">
+                  <actions>
+                     <action alt="null" id="ks6858ed_ksjh86ln" targetScreen="ksjh86ln">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <dataDecision id="kskv45uk">
+                  <title>Data Source?</title>
+                  <dataName>temp.tmp_DataSource</dataName>
+                  <actions>
+                     <action alt="equals Amazon RDS"
+                             id="kskv45uk_kskv45ut"
+                             targetScreen="kskv45ut">
+                        <text>Amazon RDS</text>
+                     </action>
+                     <action alt="equals Amazon S3"
+                             id="kskv45uk_kskv45ut_1"
+                             targetScreen="kskv45ut">
+                        <text>Amazon S3</text>
+                     </action>
+                     <action alt="equals Azure Data Lake Store"
+                             id="kskv45uk_kskv45ut_2"
+                             targetScreen="kskv45ut">
+                        <text>Azure Data Lake Store</text>
+                     </action>
+                     <action alt="equals Google Cloud Storage"
+                             id="kskv45uk_kskv45ut_3"
+                             targetScreen="kskv45ut">
+                        <text>Google Cloud Storage</text>
+                     </action>
+                     <action alt="equals NetSuite"
+                             id="kskv45uk_kskv45ut_4"
+                             targetScreen="kskv45ut">
+                        <text>NetSuite</text>
+                     </action>
+                     <action alt="equals Salesforce"
+                             id="kskv45uk_kskv45vu"
+                             targetScreen="kskv45vu">
+                        <text>Salesforce</text>
+                     </action>
+                     <action alt="else " id="kskv45uk_kskv45ut_5" targetScreen="kskv45ut">
+                        <text>otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <dataDecision id="ksorguke">
+                  <title>Required Fields Exist?</title>
+                  <dataName>temp.tmp_ReqAttributesExist</dataName>
+                  <actions>
+                     <action alt="true" id="ksorguke_ksorgup2" targetScreen="ksorgup2">
+                        <text>Yes</text>
+                     </action>
+                     <action alt="false" id="ksorguke_ksorgumy" targetScreen="ksorgumy">
+                        <text>No</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <assignment id="ksjh86lz">
+                  <title>Set Default Values</title>
+                  <operation source="constant" to="temp.tmp_rowLimit">10</operation>
+                  <operation source="constant" to="temp.tmp_ActivityMonitorDetails">false</operation>
+                  <operation source="constant" to="temp.tmp_S3ConnectionName">S3_IICS_Demo_V2</operation>
+                  <operation source="constant" to="temp.tmp_Path">Workspaces/Basav_Awanti</operation>
+                  <operation source="constant" to="temp.tmp_PathType">Folder</operation>
+                  <actions>
+                     <action alt="null" id="ksjh86lz_ksjh86li" targetScreen="ksjh86li">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="kskiffwe">
+                  <title>Enrich Data With Configurations</title>
+                  <operation source="formula" to="output.activityLogResponse">
+                     <expression language="XQuery">&lt;activityLogResponse&gt;
+{for $logEntry in $output.activityLogResponse[1]/activityLogEntry
+return 
+&lt;activityLogEntry&gt;
+  {$logEntry/*}
+  &lt;taskType&gt;{ if($logEntry/type[2]='MTT') then 'Mapping Task' else if($logEntry/type[2]='MTT_DP') then 'Data Preview' else if($logEntry/type[2]='MTT_TEST') then 'Mapping Test' else if($logEntry/type[2]='DSS') then 'Synchronization Task' else if($logEntry/type[2]='WORKFLOW') then 'Linear Taskflow' else if($logEntry/type[2]='DRS') then 'Replication Task' else if($logEntry/type[2]='DMASK') then 'Masking Task' else if($logEntry/type[2]='PCS') then 'PowerCenter Task' else $logEntry/type[2] }&lt;/taskType&gt;
+  &lt;taskStateDescription&gt;{ if($logEntry/state='1') then 'Completed Successfully' else if($logEntry/state='2') then 'Completed with Errors' else if($logEntry/state='3') then 'Failed to Complete' else if($logEntry/state='4') then 'Task not Started' else () }&lt;/taskStateDescription&gt;
+&lt;/activityLogEntry&gt;
+}
+&lt;/activityLogResponse&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.activityMonitorResponse">
+                     <expression language="XQuery">&lt;activityMonitorResponse&gt;
+{for $logEntry in $output.activityMonitorResponse[1]/activityMonitorEntry 
+return 
+&lt;activityMonitorEntry&gt;
+  {$logEntry/*}
+  &lt;taskType&gt;{ if($logEntry/type[2]='MTT') then 'Mapping Task' else if($logEntry/type[2]='MTT_DP') then 'Data Preview' else if($logEntry/type[2]='MTT_TEST') then 'Mapping Test' else if($logEntry/type[2]='DSS') then 'Synchronization Task' else if($logEntry/type[2]='WORKFLOW') then 'Linear Taskflow' else if($logEntry/type[2]='DRS') then 'Replication Task' else if($logEntry/type[2]='DMASK') then 'Masking Task' else if($logEntry/type[2]='PCS') then 'PowerCenter Task' else $logEntry/type[2] }&lt;/taskType&gt;  
+&lt;/activityMonitorEntry&gt;
+}
+&lt;/activityMonitorResponse&gt;</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="kskiffwe_ks6557pq" targetScreen="ks6557pq">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="ksoyy1gn">
+                  <title>Read Connection Info</title>
+                  <operation source="field" to="temp.tmp_S3ConnectionInfo">output.connectionInfo</operation>
+                  <actions>
+                     <action alt="null" id="ksoyy1gn_kspaatvn" targetScreen="kspaatvn">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="ksorgugv">
+                  <title>Check for Required Fields</title>
+                  <operation source="formula" to="temp.tmp_ReqAttributesExist">
+                     <expression language="XQuery">if( empty($temp.tmp_NameSuffix ) or empty($temp.tmp_UserName ) or empty($temp.tmp_ServerUrl  ) or empty($temp.tmp_Password ) )
+then false()
+else true()
+</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="ksorgugv_ksorguke" targetScreen="ksorguke">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="ksorgup2">
+                  <title>Set Create Connection Request</title>
+                  <operation source="formula" to="temp.tmp_NameValueList">
+                     <expression language="XQuery">let $nameValueArray:= 
+&lt;nameValueArray&gt;
+  &lt;nameValue&gt;
+    &lt;name&gt;@type&lt;/name&gt;
+    &lt;value&gt;connection&lt;/value&gt;
+  &lt;/nameValue&gt;
+  &lt;nameValue&gt;
+    &lt;name&gt;type&lt;/name&gt;
+    &lt;value&gt;Salesforce&lt;/value&gt;
+  &lt;/nameValue&gt;
+    &lt;nameValue&gt;
+    &lt;name&gt;name&lt;/name&gt;
+    &lt;value&gt;Salesforce_{$temp.tmp_NameSuffix }&lt;/value&gt;
+  &lt;/nameValue&gt;
+  &lt;nameValue&gt;
+    &lt;name&gt;serviceUrl&lt;/name&gt;
+    &lt;value&gt;{$temp.tmp_ServerUrl}&lt;/value&gt;
+  &lt;/nameValue&gt;
+  &lt;nameValue&gt;
+    &lt;name&gt;runtimeEnvironmentId&lt;/name&gt;
+    &lt;value&gt;{$temp.tmp_S3ConnectionInfo[1]/runtimeEnvironmentId }&lt;/value&gt;
+  &lt;/nameValue&gt;
+  &lt;nameValue&gt;
+    &lt;name&gt;username&lt;/name&gt;
+    &lt;value&gt;{$temp.tmp_UserName }&lt;/value&gt;
+  &lt;/nameValue&gt;
+   &lt;nameValue&gt;
+    &lt;name&gt;securityToken&lt;/name&gt;
+    &lt;value&gt;{$temp.tmp_SecurityToken }&lt;/value&gt;
+  &lt;/nameValue&gt;
+  &lt;nameValue&gt;
+    &lt;name&gt;password&lt;/name&gt;
+    &lt;value&gt;{$temp.tmp_Password }&lt;/value&gt;
+  &lt;/nameValue&gt;
+&lt;/nameValueArray&gt;
+
+return $nameValueArray/nameValue</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="ksorgup2_ksp2ilvd" targetScreen="ksp2ilvd">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="ksp2ilvd">
+                  <title>Set Mapping Template Name &amp; Task Name</title>
+                  <operation source="formula" to="temp.tmp_MappingName">
+                     <expression language="XQuery">if($temp.tmp_Salesforce_Object = 'Account' )
+then 'm_salesforce_acct_to_s3_template'
+else 'm_salesforce_contact_to_s3_template'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_MappingTaskName">
+                     <expression language="XQuery">lower-case( concat('mt_salesforce_', $temp.tmp_Salesforce_Object, '_to_s3_', $temp.tmp_NameSuffix ) )</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="ksp2ilvd_ksorgukn" targetScreen="ksorgukn">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="ksorgumy">
+                  <title>Set Error Message</title>
+                  <operation source="constant" to="temp.tmp_Message">Please enter all the required fields</operation>
+                  <actions>
+                     <action alt="null" id="ksorgumy_ksorgula" targetScreen="ksorgula">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>8cFievsfN6EiFeAz0C4WCM</types1:GUID>
+      <types1:DisplayName>ExpressAnalyticsGuide</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-24T20:02:14.21Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

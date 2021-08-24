@@ -1,0 +1,1458 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>98dpgbcggaaaaa-gt-26841310-2021-08-20T16:31:32.969Z::svc.xml</types1:EntryId>
+      <types1:Name>Cloud-Platform-REST-API</types1:Name>
+      <types1:ParentFlowIds>p7aa-gt-15572194-2021-08-20T22:39:05.924Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Used to interact with IICS Cloud Platform APIs. This connector can be used to interact with 
+Platform Verion2, Platform Verion3, Data Integration &amp; Mass Ingestion REST APIs. 
+
+REST APIs Documentation Link https://docs.informatica.com/integration-cloud/cloud-platform/current-version/rest-api-reference/preface.html</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>bawanti@demo.informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2021-08-20T16:31:33Z</types1:CreationDate>
+      <types1:ModifiedBy>bawanti@demo.informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-08-24T15:11:59Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>bawanti@demo.informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2021-08-24T17:10:30Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/Cloud_Platform_REST_API/Cloud_Platform_REST_API_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="Cloud-Platform-REST-API"
+                            label=""
+                            name="Cloud-Platform-REST-API"
+                            uuid="0389eef4-3797-4c93-b6be-fadd45a70db9">
+            <description>Used to interact with IICS Cloud Platform APIs. This connector can be used to interact with 
+Platform Verion2, Platform Verion3, Data Integration &amp; Mass Ingestion REST APIs. 
+
+REST APIs Documentation Link https://docs.informatica.com/integration-cloud/cloud-platform/current-version/rest-api-reference/preface.html</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description="Region Name[North America = us, Europe = em,  Asia Pacific=ap]. Example: For North America, Region = us"
+                                    masked="false"
+                                    name="Region"
+                                    required="true"
+                                    testWith="us"
+                                    type="string"/>
+               <connectionAttribute description="Informatica Intelligent Cloud Services user name.&#xA;Maximum length is 255 characters."
+                                    masked="false"
+                                    name="username"
+                                    required="true"
+                                    testWith="bawanti@demo.informatica.com"
+                                    type="string"/>
+               <connectionAttribute description="Informatica Intelligent Cloud Services password.&#xA;Maximum length is 255 characters."
+                                    masked="true"
+                                    name="password"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category="Platform-Version2"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Login"
+                       maxRedirects="100"
+                       name="Login"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>You can use this resource to log in to your organization using your Informatica Intelligent Cloud Services user account</description>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-{$Region}.informaticacloud.com/ma/api/v2/user/login"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+ "username": "{$username}",
+ "password": "{$password }"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="Login Response"
+                            entireResponse="true"
+                            name="loginResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">loginResponse</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Platform-Version2"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="GetBase"
+                       label="ActivityLog"
+                       maxRedirects="100"
+                       name="ActivityLog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Use this resource to request log information for completed jobs from the Monitor service. You can also request error logs and session logs.</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter description="Job ID associated with the log entry ID."
+                                name="runId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Task ID associated with the log entry ID. If taskId is not specified, all activityLog entries for all tasks are returned."
+                                name="taskId"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="The number of rows to skip. For example, you might want to skip the first three rows."
+                                name="offset"
+                                required="false"
+                                testWith=""
+                                type="int"/>
+                     <parameter description="The maximum number of rows to return. The maximum number you can specify is 1000.&#xA;If you omit this attribute, the activityLog returns all available rows, up to a maximum of 200 rows."
+                                name="rowLimit"
+                                required="false"
+                                testWith="3"
+                                type="int"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/v2/activity/activityLog" verb="GET"/>
+                  </binding>
+                  <output>
+                     <field description="" name="activityLogResponse" type="reference">
+                        <options>
+                           <option name="referenceTo">activityLogResponse</option>
+                        </options>
+                        <xquery>{let $payload := $RESTResponse/*:payload/text()
+let $records_list := util:parseJSON($payload)
+return 
+&lt;activityLogResponse&gt;
+{ for $record in $records_list
+return
+&lt;activityLogEntry&gt;
+ {$record/*}
+ &lt;/activityLogEntry&gt; }
+&lt;/activityLogResponse&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="GetBase"
+                       maxRedirects="100"
+                       name="GetBase"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Abstract action reused by all the Version 2 GET APIs</description>
+                  <input>
+                     <parameter description="Informatica Intelligent Cloud Services session ID for version 2 REST API session"
+                                name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="19MLVV6MCiQb5qIhn7wrex"
+                                type="string"/>
+                     <parameter description="Informatica Intelligent Cloud Services URL for the organization the user belongs to"
+                                name="serverUrl"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated" url="{$serverUrl}/api" verb="GET">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Platform-Version2"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="GetBase"
+                       label="ActivityMonitor"
+                       maxRedirects="100"
+                       name="ActivityMonitor"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Use this resource to request log information for running jobs from the Monitor service.</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="details" required="false" testWith="true" type="boolean"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/v2/activity/activityMonitor" verb="GET"/>
+                  </binding>
+                  <output>
+                     <field description="" name="activityMonitorResponse" type="reference">
+                        <options>
+                           <option name="referenceTo">activityMonitorResponse</option>
+                        </options>
+                        <xquery>{let $payload := $RESTResponse/*:payload/text()
+let $records_list := util:parseJSON($payload)
+return 
+&lt;activityMonitorResponse&gt;
+{ for $record in $records_list
+return
+&lt;activityMonitorEntry&gt;
+ {$record/*}
+ &lt;/activityMonitorEntry&gt; }
+&lt;/activityMonitorResponse&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="PostBase"
+                       maxRedirects="100"
+                       name="PostBase"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Abstract action reused by all the POST Version 2 APIs</description>
+                  <input>
+                     <parameter description="Session ID for version 2 REST API session"
+                                name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="lhyt3sIXomIgVcQovdUrAr"
+                                type="string"/>
+                     <parameter description="Informatica Intelligent Cloud Services URL for the organization the user belongs to"
+                                name="serverUrl"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated" url="{$serverUrl}" verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Data-Integration"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="PostBase"
+                       label="CreateConnection"
+                       maxRedirects="100"
+                       name="CreateConnection"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Use this action to create Cloud Data Integration Connection</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="body">
+                           <attribute inherit="overwrite" name="generateUsing" type="generateUsing"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter description="Connection attributes with name value pair."
+                                name="nameValueList"
+                                required="true"
+                                testWith="&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;@type&lt;/name&gt;&#xA;&#x9;&lt;value&gt;connection&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;name&lt;/name&gt;&#xA;&#x9;&lt;value&gt;infaips_Salesforce_2&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;serviceUrl&lt;/name&gt;&#xA;&#x9;&lt;value&gt;https://login.salesforce.com/services/Soap/u/48.0&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;type&lt;/name&gt;&#xA;&#x9;&lt;value&gt;Salesforce&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;username&lt;/name&gt;&#xA;&#x9;&lt;value&gt;bawanti@infaipsspi.com&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;password&lt;/name&gt;&#xA;&#x9;&lt;value&gt;Doshgul1@&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;securityToken&lt;/name&gt;&#xA;&#x9;&lt;value&gt;HZYSODj3jRbFQ06CwOabzBg4u&lt;/value&gt;&#xA;&lt;/nameValue&gt;&#xA;&lt;nameValue&gt;&#xA;&#x9;&lt;name&gt;runtimeEnvironmentId&lt;/name&gt;&#xA;&#x9;&lt;value&gt;0102OB25000000000004&lt;/value&gt;&#xA;&lt;/nameValue&gt;"
+                                type="objectlist">
+                        <options>
+                           <option name="referenceTo">nameValue</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/api/v2/connection" verb="POST">
+                        <body>{{
+    {      
+      let $connAttributeArray:= for $nameValuePair in $nameValueList
+        return concat('"', $nameValuePair/name, '":"',$nameValuePair/value,'"' ) 
+        return string-join($connAttributeArray,",")
+    }
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="Connection Details"
+                            entireResponse="true"
+                            name="connectionInfo"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">connectionInfo</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Data-Integration"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="PostBase"
+                       label="CreateMappingTask"
+                       maxRedirects="100"
+                       name="CreateMappingTask"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Used to create a mapping task.</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="body">
+                           <attribute inherit="overwrite" name="generateUsing" type="generateUsing"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter description="ID of the project or folder to contain the task.&#xA;If not included in the request, the task is created in the Default folder."
+                                name="containerId"
+                                nogen="true"
+                                required="false"
+                                testWith="104MvQ2ZXSQg6d5CMhVn0U"
+                                type="string"/>
+                     <parameter description="Task name"
+                                name="name"
+                                nogen="true"
+                                required="true"
+                                testWith="mt_salesforce_account_to_s3_ea5"
+                                type="string"/>
+                     <parameter description="Description for the task"
+                                name="description"
+                                nogen="true"
+                                required="false"
+                                testWith="test"
+                                type="string"/>
+                     <parameter description="ID of the runtime environment used for the task."
+                                name="runtimeEnvironmentId"
+                                nogen="true"
+                                required="true"
+                                testWith="0101PH2500000000000F"
+                                type="string"/>
+                     <parameter description="ID of the mapping used in the task."
+                                name="mappingId"
+                                nogen="true"
+                                required="true"
+                                testWith="0101PH170000000003LA"
+                                type="string"/>
+                     <parameter description="Name of the Salesforce Source Object"
+                                name="srcObject"
+                                nogen="true"
+                                required="true"
+                                testWith="Account"
+                                type="string"/>
+                     <parameter description="Include in the mtTaskParameter object. Source connection ID"
+                                name="sourceConnectionId"
+                                nogen="true"
+                                required="true"
+                                testWith="0101PH0B00000000019Y"
+                                type="string"/>
+                     <parameter description="Include in the mtTaskParameter object. Target connection ID"
+                                name="targetConnectionId"
+                                nogen="true"
+                                required="true"
+                                testWith="0101PH0B0000000000O4"
+                                type="string"/>
+                     <parameter description="Schedule associated with the task, if any."
+                                name="scheduleId"
+                                nogen="true"
+                                required="false"
+                                testWith="0101PHD0000000000005"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/api/v2/mttask" verb="POST">
+                        <body>{{
+    "@type": "mtTask",    
+	"containerId": "{$containerId}",
+    "scheduleId": "{$scheduleId}",
+    "name": "{$name}",
+    "description": "{$description}",    
+    "runtimeEnvironmentId": "{$runtimeEnvironmentId}",    
+    "mappingId": "{$mappingId}",        
+    "parameters": [
+        {{
+            "@type": "mtTaskParameter",            
+            "name": "$src_{fn:lower-case($srcObject)}$",
+            "type": "EXTENDED_SOURCE",
+            "label": "sf_conn_param",            
+            "sourceConnectionId": "{$sourceConnectionId}",            
+            "runtimeParameterData": {{
+                "@type": "mtTaskRuntimeParameterData",
+                "isConnectionRuntimeParameter": false,
+                "isObjectRuntimeParameter": false,
+                "connectionParameterName": "sf_conn_param"
+            }}
+        }},
+        {{
+            "@type": "mtTaskParameter",            
+            "name": "$tgt_s3$",
+            "type": "TARGET",
+            "label": "tgt_s3",            
+            "targetConnectionId": "{$targetConnectionId}",
+            "targetObject": "OEM_{$srcObject}.csv",
+            "targetObjectLabel": "OEM_{$srcObject}.csv",            
+            "newObjectName": "OEM_{$srcObject}.csv",            
+            "operationType": "Insert"                        
+            
+        }}
+    ]    
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="createMappingTaskResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">mappingTaskInfo</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Platform-Version3"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="PostBaseV3"
+                       label="Lookup"
+                       maxRedirects="100"
+                       name="Lookup"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Use the lookup resource to look up an object's ID, name, path, or type attributes.
+Refer to this link for detailed API documentation https://docs.informatica.com/integration-cloud/cloud-platform/current-version/rest-api-reference/platform-rest-api-version-3-resources/lookup.html</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="body">
+                           <attribute inherit="overwrite" name="generateUsing" type="generateUsing"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="INFA-SESSION-ID" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter description="Full path of the object including project, folder, and object name. Required with type if object ID not included."
+                                name="path"
+                                nogen="true"
+                                required="true"
+                                testWith="Workspaces/Basav_Awanti"
+                                type="string"/>
+                     <parameter description="Type of object. Required with path if object ID not included."
+                                name="type"
+                                nogen="true"
+                                required="true"
+                                testWith="Folder"
+                                type="string"/>
+                     <parameter description="Global identifier of the object. Required if object path and type not included."
+                                name="id"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/public/core/v3/lookup" verb="POST">
+                        <body>{{
+  "objects":[  
+   		{{"path":"Workspaces/Basav_Awanti","type":"Folder"}},
+		{{"path":"Workspaces","type":"Project"}}
+  ]
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="lookupResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">lookupResponse</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Platform-Version3"
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="GetBaseV3"
+                       maxRedirects="100"
+                       name="GetBaseV3"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Abstract GET Action for Version 3 REST APIs</description>
+                  <input>
+                     <parameter description="Session ID for V3 REST APIs"
+                                name="icSessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="4JARbHLlGA5lWSen0tmEO9"
+                                type="string"/>
+                     <parameter description="Informatica Intelligent Cloud Services URL for the organization the user belongs to"
+                                name="serverUrl"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated" url="{$serverUrl}" verb="GET">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="INFA-SESSION-ID">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Platform-Version3"
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="PostBaseV3"
+                       maxRedirects="100"
+                       name="PostBaseV3"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Abstract POST action for Version 3 REST APIs</description>
+                  <input>
+                     <parameter description="Session ID for V3 REST APIs"
+                                name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="kUNZhDufUinkh4QyE4S2i6"
+                                type="string"/>
+                     <parameter description="Informatica Intelligent Cloud Services URL for the organization the user belongs to"
+                                name="serverUrl"
+                                nogen="true"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated" url="{$serverUrl}" verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="INFA-SESSION-ID">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Data-Integration"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="GetBase"
+                       label="GetConnection"
+                       maxRedirects="100"
+                       name="GetConnection"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get connection details using name</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="connectionName"
+                                nogen="true"
+                                required="true"
+                                testWith="S3_IICS_Demo_V2"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/v2/connection/name/{$connectionName}" verb="GET"/>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="connectionInfo"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">connectionInfo</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Data-Integration"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="GetBase"
+                       label="GetMappingByName"
+                       maxRedirects="100"
+                       name="GetMappingByName"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get Mapping details using mapping name</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter description="Name of the mapping"
+                                name="name"
+                                nogen="true"
+                                required="true"
+                                testWith="m_salesforce_acct_to_s3_template"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/v2/mapping/name/{$name}" verb="GET"/>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="mappingInfo"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">mappingInfo</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Platform-Version3"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="GetBase"
+                       label="GetSchedule"
+                       maxRedirects="100"
+                       name="GetSchedule"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Use this resource to get details of the schedules in the organization</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="icSessionId" type="parameter"/>
+                           <attribute inherit="inherit" name="serverUrl" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="icSessionId" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/v2/schedule" verb="GET"/>
+                  </binding>
+                  <output>
+                     <field description="" name="scheduleResponse" type="reference">
+                        <options>
+                           <option name="referenceTo">scheduleResponse</option>
+                        </options>
+                        <xquery>{let $payload := $RESTResponse/*:payload/text()
+let $records_list := util:parseJSON($payload)
+return 
+&lt;scheduleResponse&gt;
+{ for $record in $records_list
+return
+&lt;schedule&gt;
+ {$record/*}
+ &lt;/schedule&gt; }
+&lt;/scheduleResponse&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="loginResponse">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="lastName" type="string"/>
+                     <field name="securityAnswer" type="string"/>
+                     <field name="timezone" type="string"/>
+                     <field name="roles" type="objectlist">
+                        <options>
+                           <option name="referenceTo">roles</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="description" type="string"/>
+                     <field name="sfUsername" type="string"/>
+                     <field name="title" type="string"/>
+                     <field name="uuid" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="orgUuid" type="string"/>
+                     <field name="emails" type="string"/>
+                     <field name="password" type="string"/>
+                     <field name="serverUrl" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="securityQuestion" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="firstName" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="phone" type="double"/>
+                     <field name="usergroups" type="reference">
+                        <options>
+                           <option name="referenceTo">userGroups</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="icSessionId" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="forceChangePassword" type="string"/>
+                     <field name="spiUrl" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="roles">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="name" type="string"/>
+                     <field name="description" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="userGroups">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="updatedBy" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="orgId" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="activityLogResponse">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="activityLogEntry" type="objectlist">
+                        <options>
+                           <option name="referenceTo">activityLogEntry</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="activityLogEntry">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="endTimeUtc" type="string"/>
+                     <field name="startedBy" type="string"/>
+                     <field name="successTargetRows" type="int"/>
+                     <field name="parentTaskFederatedId" type="string"/>
+                     <field name="hasStopOnErrorRecord" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="failedSourceRows" type="int"/>
+                     <field name="stopOnError" type="string"/>
+                     <field name="successSourceRows" type="int"/>
+                     <field name="entries" type="reference">
+                        <options>
+                           <option name="referenceTo">entries</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="objectName" type="string"/>
+                     <field name="failedTargetRows" type="int"/>
+                     <field name="startTime" type="string"/>
+                     <field name="totalSuccessRows" type="int"/>
+                     <field name="id" type="string"/>
+                     <field name="runId" type="int"/>
+                     <field name="endTime" type="string"/>
+                     <field name="state" type="int"/>
+                     <field name="totalFailedRows" type="int"/>
+                     <field name="runContextType" type="string"/>
+                     <field name="objectId" type="string"/>
+                     <field name="startTimeUtc" type="string"/>
+                     <field name="errorMsg" type="string"/>
+                     <field name="taskType" type="string"/>
+                     <field name="taskStateDescription" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="entries">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="endTimeUtc" type="string"/>
+                     <field name="contextExternalId" type="string"/>
+                     <field name="successTargetRows" type="int"/>
+                     <field name="type" type="string"/>
+                     <field name="failedSourceRows" type="int"/>
+                     <field name="successSourceRows" type="int"/>
+                     <field name="transformationEntries" type="objectlist">
+                        <options>
+                           <option name="referenceTo">transformationEntries</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="taskRuntimeInfo" type="string"/>
+                     <field name="failedTargetRows" type="int"/>
+                     <field name="startTime" type="string"/>
+                     <field name="id" type="double"/>
+                     <field name="state" type="int"/>
+                     <field name="totalFailedRows" type="int"/>
+                     <field name="logEntryItemAttrs" type="reference">
+                        <options>
+                           <option name="referenceTo">logEntryItemAttrs</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="startedBy" type="string"/>
+                     <field name="hasStopOnErrorRecord" type="string"/>
+                     <field name="errorMsg" type="string"/>
+                     <field name="sessionVariables" type="reference">
+                        <options>
+                           <option name="referenceTo">sessionVariables</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="subTaskEntries" type="string"/>
+                     <field name="stopOnError" type="string"/>
+                     <field name="entries" type="string"/>
+                     <field name="objectName" type="string"/>
+                     <field name="totalSuccessRows" type="int"/>
+                     <field name="runId" type="int"/>
+                     <field name="endTime" type="string"/>
+                     <field name="runContextType" type="string"/>
+                     <field name="startTimeUtc" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="transformationEntries">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="failedRows" type="int"/>
+                     <field name="successRows" type="int"/>
+                     <field name="txType" type="string"/>
+                     <field name="id" type="double"/>
+                     <field name="type" type="string"/>
+                     <field name="txName" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="logEntryItemAttrs">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="IS_SERVER_LESS" type="boolean"/>
+                     <field name="CONSUMED_COMPUTE_UNITS" type="double"/>
+                     <field name="REQUESTED_COMPUTE_UNITS" type="double"/>
+                     <field name="SessionLogFileName" type="string"/>
+                     <field name="ERROR_CODE" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sessionVariables">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="Filter" type="string"/>
+                     <field name="FileName" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="activityMonitorEntry">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="objectName" type="string"/>
+                     <field name="runId" type="int"/>
+                     <field name="startTime" type="datetime"/>
+                     <field name="endTime" type="datetime"/>
+                     <field name="executionState" type="string"/>
+                     <field name="failedSourceRows" type="int"/>
+                     <field name="successSourceRows" type="int"/>
+                     <field name="failedTargetRows" type="int"/>
+                     <field name="successTargetRows" type="int"/>
+                     <field name="errorMsg" type="string"/>
+                     <field name="entries" type="reference">
+                        <options>
+                           <option name="referenceTo">entries</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="taskName" type="string"/>
+                     <field name="runContextType" type="string"/>
+                     <field name="scheduleName" type="string"/>
+                     <field name="taskType" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="activityMonitorResponse">
+                  <description/>
+                  <detail>
+                     <field name="activityMonitorEntry" type="objectlist">
+                        <options>
+                           <option name="referenceTo">activityMonitorEntry</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="nameValue">
+                  <description>Used to maintain name value pair</description>
+                  <detail>
+                     <field name="name" type="string"/>
+                     <field name="value" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="connectionInfo">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="retryNetworkError" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="internal" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="connParams" type="reference">
+                        <options>
+                           <option name="referenceTo">connectionParams</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="serviceUrl" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="majorUpdateTime" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="timeout" type="int"/>
+                     <field name="securityToken" type="string"/>
+                     <field name="password" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="port" type="int"/>
+                     <field name="federatedId" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="username" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="connectionParams">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="agentId" type="string"/>
+                     <field name="agentGroupId" type="string"/>
+                     <field name="orgId" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="lookupResponse">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="objects" type="objectlist">
+                        <options>
+                           <option name="referenceTo">objects</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="objects">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="path" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="metadataUpdated" type="string"/>
+                     <field name="children" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="relations" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="mappingInfo">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="references" type="reference">
+                        <options>
+                           <option name="referenceTo">references</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="documentType" type="string"/>
+                     <field name="inOutParameters" type="string"/>
+                     <field name="bundleVersion" type="int"/>
+                     <field name="hasParametersDeployed" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="templateId" type="string"/>
+                     <field name="sequences" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="deployedMappingPreviewFileRecordId" type="string"/>
+                     <field name="valid" type="string"/>
+                     <field name="hasParameters" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="deployTime" type="double"/>
+                     <field name="tasks" type="int"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="fixedConnection" type="string"/>
+                     <field name="deployedTemplateId" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="mappingPreviewFileRecordId" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="fixedConnectionDeployed" type="string"/>
+                     <field name="parameters" type="objectlist">
+                        <options>
+                           <option name="referenceTo">parameters</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="references">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="refType" type="string"/>
+                     <field name="refObjectId" type="string"/>
+                     <field name="type" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="parameters">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="currentlyProcessedFileName" type="string"/>
+                     <field name="naturalOrder" type="string"/>
+                     <field name="extendedObject" type="reference">
+                        <options>
+                           <option name="referenceTo">extendedObject</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="description" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="frsAsset" type="string"/>
+                     <field name="tgtObjectAttributes" type="reference">
+                        <options>
+                           <option name="referenceTo">tgtObjectAttributes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="handleSpecialChars" type="string"/>
+                     <field name="runtimeAttrs" type="string"/>
+                     <field name="newObject" type="string"/>
+                     <field name="isFileList" type="boolean"/>
+                     <field name="dynamicFileName" type="string"/>
+                     <field name="id" type="int"/>
+                     <field name="tgtFieldRefs" type="string"/>
+                     <field name="newFlatFile" type="string"/>
+                     <field name="isRESTModernSource" type="boolean"/>
+                     <field name="bulkApiDBTarget" type="string"/>
+                     <field name="runtimeParameterData" type="reference">
+                        <options>
+                           <option name="referenceTo">runtimeParameterData</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="showBusinessNames" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="targetUpdateColumns" type="string"/>
+                     <field name="overriddenFields" type="string"/>
+                     <field name="truncateTarget" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="uiProperties" type="reference">
+                        <options>
+                           <option name="referenceTo">uiProperties</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="targetObject" type="string"/>
+                     <field name="dataFormat" type="reference">
+                        <options>
+                           <option name="referenceTo">dataFormat</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="targetObjectLabel" type="string"/>
+                     <field name="targetConnectionId" type="string"/>
+                     <field name="objectName" type="string"/>
+                     <field name="operationType" type="string"/>
+                     <field name="newObjectName" type="string"/>
+                     <field name="objectLabel" type="string"/>
+                     <field name="fetchMode" type="string"/>
+                     <field name="customFuncCfg" type="reference">
+                        <options>
+                           <option name="referenceTo">customFuncCfg</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="sourceObject" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="extendedObject">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="objects" type="reference">
+                        <options>
+                           <option name="referenceTo">objects</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="sortFields" type="string"/>
+                     <field name="filters" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="object" type="reference">
+                        <options>
+                           <option name="referenceTo">object</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="object">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="metadataUpdated" type="string"/>
+                     <field name="children" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="relations" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="runtimeParameterData">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="isObjectRuntimeParameter" type="boolean"/>
+                     <field name="type" type="string"/>
+                     <field name="connectionParameterName" type="string"/>
+                     <field name="isConnectionRuntimeParameter" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="uiProperties">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="isMsrcFilterParameterized" type="boolean"/>
+                     <field name="connectionParameterized" type="string"/>
+                     <field name="visible" type="string"/>
+                     <field name="isMsrcSortParameterized" type="boolean"/>
+                     <field name="cnxtype" type="string"/>
+                     <field name="objectParameterized" type="string"/>
+                     <field name="logcnx" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="tgtObjectAttributes">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="parent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="dataFormat">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="schema" type="string"/>
+                     <field name="formatId" type="string"/>
+                     <field name="dataFormatAttributes" type="reference">
+                        <options>
+                           <option name="referenceTo">dataFormatAttributes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="type" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="dataFormatAttributes">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="escapeChar" type="string"/>
+                     <field name="rowDelimiter" type="string"/>
+                     <field name="importColumnFromFirstLine" type="string"/>
+                     <field name="headerLineNumber" type="int"/>
+                     <field name="maxRowsToPreview" type="int"/>
+                     <field name="distributionColumn" type="string"/>
+                     <field name="qualifierMode" type="string"/>
+                     <field name="firstDataRow" type="int"/>
+                     <field name="generateHeader" type="string"/>
+                     <field name="delimiter" type="string"/>
+                     <field name="qualifier" type="string"/>
+                     <field name="targetHeader" type="string"/>
+                     <field name="escapeCharacterDataRetained" type="string"/>
+                     <field name="codePage" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="mappingTaskInfo">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="mappingId" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="inOutParameters" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="sequences" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="enableCrossSchemaPushdown" type="string"/>
+                     <field name="autoTunedAppliedType" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="sessionProperties" type="string"/>
+                     <field name="enableParallelRun" type="string"/>
+                     <field name="connRuntimeAttrs" type="string"/>
+                     <field name="autoTunedApplied" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="schemaMode" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="shortDescription" type="string"/>
+                     <field name="verbose" type="string"/>
+                     <field name="serverlessProperties" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="parameters" type="objectlist">
+                        <options>
+                           <option name="referenceTo">parameters</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="maxLogs" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="customFuncCfg">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="outputFields" type="string"/>
+                     <field name="id" type="int"/>
+                     <field name="type" type="string"/>
+                     <field name="inputMap" type="string"/>
+                     <field name="connections" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="scheduleResponse">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="schedule" type="objectlist">
+                        <options>
+                           <option name="referenceTo">schedule</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="schedule">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="thu" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="tue" type="string"/>
+                     <field name="timeZoneId" type="string"/>
+                     <field name="sat" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="mon" type="string"/>
+                     <field name="sun" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="frequency" type="int"/>
+                     <field name="createTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="dayOfMonth" type="int"/>
+                     <field name="wed" type="string"/>
+                     <field name="weekDay" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="startTime" type="string"/>
+                     <field name="interval" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="fri" type="string"/>
+                     <field name="startTimeUTC" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="weekOfMonth" type="string"/>
+                     <field name="dayOfWeek" type="string"/>
+                     <field name="endTimeUTC" type="string"/>
+                     <field name="endTime" type="string"/>
+                     <field name="rangeStartTime" type="string"/>
+                     <field name="rangeEndTimeUTC" type="string"/>
+                     <field name="rangeEndTime" type="string"/>
+                     <field name="rangeStartTimeUTC" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>1BjMOVxl8KAiwkY35UGVKH</types1:GUID>
+      <types1:DisplayName>Cloud-Platform-REST-API</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-24T20:02:13.984Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "5Eq4aRIVsSYhhr7FtJU5gj",
+      "objectName": "Workspaces",
+      "objectType": "Project",
+      "path": "/Explore",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "Project for Custom work on the Common Demo Platform please create customer/consultant specific folders under this project.",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]

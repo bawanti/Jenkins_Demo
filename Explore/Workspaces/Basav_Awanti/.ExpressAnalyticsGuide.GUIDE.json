@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "8cFievsfN6EiFeAz0C4WCM",
+      "objectName": "ExpressAnalyticsGuide",
+      "objectType": "GUIDE",
+      "path": "/Explore/Workspaces/Basav_Awanti",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "This guide will help users to \n1. Monitor activity logs \n2. Create integration tasks\n3. Assign a schedule",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "8ck7thmJ4oEiT2sJvGRL0x"
+         ],
+         "repoInfo": {
+            "repoHandle": "drZQT53nQciSrZM-gt-24918087-2021-08-19T22:09:35.052Z::gt.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "8ck7thmJ4oEiT2sJvGRL0x",
+      "objectName": "Cloud-Platform-REST-API",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Workspaces/Basav_Awanti",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Connection used for Cloud Platform REST APIs.",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "p7aa-gt-15572194-2021-08-20T22:39:05.924Z::conn.xml"
+         }
+      }
+   }
+]

@@ -1,0 +1,56 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>p7aa-gt-15572194-2021-08-20T22:39:05.924Z::conn.xml</types1:EntryId>
+      <types1:Name>Cloud-Platform-REST-API</types1:Name>
+      <types1:ParentFlowIds>drZQT53nQciSrZM-gt-24918087-2021-08-19T22:09:35.052Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Connection used for Cloud Platform REST APIs.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>bawanti@demo.informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2021-08-20T22:39:06Z</types1:CreationDate>
+      <types1:ModifiedBy>bawanti@demo.informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-08-24T17:10:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>bawanti@demo.informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2021-08-24T17:11:10Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/Cloud-Platform-REST-API/Cloud-Platform-REST-API.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="Cloud-Platform-REST-API"
+                     label="Cloud-Platform-REST-API"
+                     name="Cloud-Platform-REST-API">
+            <description>Connection used for Cloud Platform REST APIs.</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="Region" value="us"/>
+               <attribute encrypted="false"
+                          name="username"
+                          value="bawanti@demo.informatica.com"/>
+               <attribute encrypted="true" name="password" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/Cloud_Platform_REST_API/Cloud_Platform_REST_API_svcDef.xml"
+                               guid="1BjMOVxl8KAiwkY35UGVKH"
+                               name="Cloud-Platform-REST-API"
+                               supportsConnectionTest="false"
+                               uuid="0389eef4-3797-4c93-b6be-fadd45a70db9">
+               <description>Used to interact with IICS Cloud Platform APIs. This connector can be used to interact with 
+Platform Verion2, Platform Verion3, Data Integration &amp; Mass Ingestion REST APIs. 
+
+REST APIs Documentation Link https://docs.informatica.com/integration-cloud/cloud-platform/current-version/rest-api-reference/preface.html</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>8ck7thmJ4oEiT2sJvGRL0x</types1:GUID>
+      <types1:DisplayName>Cloud-Platform-REST-API</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-08-24T20:02:14.147Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
