@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "amFLbV8tHGIf2GPw8Baz66",
+      "objectName": "Multiply-Two-Numbers",
+      "objectType": "PROCESS",
+      "path": "/Explore/Workspaces/Basav_Awanti",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "0X7Up9T6kck8jKB-gt-42886408-2021-08-25T22:39:34.98Z::pd.xml"
+         }
+      }
+   }
+]
