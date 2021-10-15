@@ -13,8 +13,8 @@
       <types1:CreatedBy>bawanti@demo.informatica.com</types1:CreatedBy>
       <types1:CreationDate>2021-08-25T19:58:20Z</types1:CreationDate>
       <types1:ModifiedBy>bawanti@demo.informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2021-08-25T19:59:49Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:ModificationDate>2021-10-15T15:02:32Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
       <types1:PublishedBy>bawanti@demo.informatica.com</types1:PublishedBy>
       <types1:PublicationDate>2021-08-25T20:00:00Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/sf.Guide1/Guide1.xml</types1:PublishedContributionId>
@@ -49,18 +49,18 @@
                   <title>Start</title>
                   <body contentType="text/html"/>
                   <actions>
-                     <action alt="" id="jd300kk3_ksrx4c26" targetScreen="ksrx4c26">
+                     <action alt="null" id="jd300kk3_ksrx4c26" targetScreen="ksrx4c26">
                         <text>Continue</text>
                      </action>
                   </actions>
                   <screenData skipIfRequiredFilled="true"/>
                </startScreen>
                <screen id="ksrx4c2d">
-                  <title>Screen 1</title>
+                  <title>Screen 1 Updated</title>
                   <body contentType="text/html">&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="userdetails (temporary)" name="temp.userdetails" readonly="readonly" type="text" value="userdetails (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
                   <actionPrompt/>
                   <actions>
-                     <action alt="" id="ksrx4c2d_jd4cwa59" targetScreen="jd4cwa59">
+                     <action alt="null" id="ksrx4c2d_jd4cwa59" targetScreen="jd4cwa59">
                         <text>Continue</text>
                      </action>
                   </actions>
@@ -89,7 +89,7 @@
                      <expression language="XQuery">util:getUserName() || "***" || util:getUserSystem()</expression>
                   </operation>
                   <actions>
-                     <action alt="" id="ksrx4c26_ksrx4c2d" targetScreen="ksrx4c2d">
+                     <action alt="null" id="ksrx4c26_ksrx4c2d" targetScreen="ksrx4c2d">
                         <text>Continue</text>
                      </action>
                   </actions>
@@ -100,5 +100,5 @@
       <types1:GUID>6vPPow5bQoallI5xlWxMGz</types1:GUID>
       <types1:DisplayName>Guide1</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-08-26T20:46:43.127Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-10-15T15:11:55.323Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
